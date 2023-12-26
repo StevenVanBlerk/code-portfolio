@@ -2,20 +2,45 @@
 
 import { motion } from "framer-motion";
 
-const FramerDemo = () => {
+const FrameMaxHeight = 1000; //px
+const FrameMaxWidth = 500; //px
+
+const circleMinWidth = 10; //px
+const Frame = ({ children }: any) => {
   return (
-    <div style={{ padding: "20px", background: "pink" }}>
+    <div
+      style={{
+        height: FrameMaxHeight,
+        width: FrameMaxWidth,
+        background: "white",
+        justifySelf: "center",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+const FramerDemo = () => {
+  const initialPositionX = 0;
+  const initialPositionY = 0;
+  return (
+    <Frame>
       <motion.div
         transition={{ repeat: Infinity, duration: 2 }}
+        initial={{ x: initialPositionX, y: initialPositionY }}
         animate={{
           scale: [1, 2, 2, 1, 1],
-          rotate: [0, 0, 270, 270, 0],
-          borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-          background: "green",
+          x: initialPositionX + FrameMaxWidth,
+          y: initialPositionY + 0,
         }}
-        style={{ background: "lightblue", height: "20px", width: "20px" }}
+        style={{
+          background: "pink",
+          height: circleMinWidth,
+          width: circleMinWidth,
+          borderRadius: "50%",
+        }}
       />
-    </div>
+    </Frame>
   );
 };
 
