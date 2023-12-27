@@ -1,17 +1,17 @@
-"use client";
+"use client"; // deactivating SSR. Alternative approach --> https://www.framer.com/motion/component/##server-side-rendering
 
 import { motion } from "framer-motion";
-import Circle from "./Circle";
+import Grid from "./Grid";
 
-const FrameMaxHeight = 1000; //px
-const FrameMaxWidth = 500; //px
+const frameHeight = 1000; //px
+const frameWidth = 1000; //px
 
 const Frame = ({ children }: any) => {
   return (
     <div
       style={{
-        height: FrameMaxHeight,
-        width: FrameMaxWidth,
+        height: frameHeight,
+        width: frameWidth,
         background: "white",
         justifySelf: "center",
       }}
@@ -21,11 +21,9 @@ const Frame = ({ children }: any) => {
   );
 };
 const BlueprintGridAnimation = () => {
-  const initialPositionX = 0;
-  const initialPositionY = 0;
   return (
     <Frame>
-      <Circle FrameMaxWidth={FrameMaxWidth} FrameMaxHeight={FrameMaxHeight} />
+      <Grid frameWidth={frameWidth} frameHeight={frameHeight} />
     </Frame>
   );
 };
