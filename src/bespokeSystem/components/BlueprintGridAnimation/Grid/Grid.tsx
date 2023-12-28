@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { moveCircle, drawGridLine } from "./helpers/motionVariants";
+import useDirector from "./helpers/useDirector";
 
 const Grid = ({ frameWidth, frameHeight }: any) => {
   const framePadding = 0; //20; //px
@@ -10,6 +11,9 @@ const Grid = ({ frameWidth, frameHeight }: any) => {
   const gapSize = 200;
   const columnCount = Math.ceil(effectiveFrameWidth / 200);
   const rowCount = Math.ceil(effectiveFrameHeight / 200);
+  const director = useDirector(3, 3);
+  console.log("director", { director });
+
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {
