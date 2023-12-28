@@ -1,35 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
-
-const draw = {
-  hidden: ({ cxInitial }: any) => ({
-    pathLength: 0,
-    opacity: 0,
-    cx: cxInitial,
-  }),
-  visible: ({ lineIndex, cxFinal }: any) => {
-    const delay = lineIndex * 0.2;
-    return {
-      pathLength: 1,
-      opacity: 1,
-      cx: cxFinal,
-      transition: {
-        pathLength: { delay, type: "spring", duration: 1, bounce: 0 },
-        cx: { delay, type: "spring", duration: 2, bounce: 0 },
-        opacity: { delay, duration: 0.01 },
-      },
-    };
-  },
-};
+import { moveCircle, drawGridLine } from "./helpers/motionVariants";
 
 const Grid = ({ frameWidth, frameHeight }: any) => {
   const framePadding = 0; //20; //px
   const effectiveFrameHeight = frameHeight - framePadding; //px
   const effectiveFrameWidth = frameWidth - framePadding; //px
+
+  const gapSize = 200;
   const columnCount = Math.ceil(effectiveFrameWidth / 200);
   const rowCount = Math.ceil(effectiveFrameHeight / 200);
-  const gapSize = 200;
-
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {
@@ -62,6 +42,7 @@ const Grid = ({ frameWidth, frameHeight }: any) => {
     frameWidth,
     gapSize,
   });
+
   return (
     <div style={{ border: "1px dashed red" }}>
       <motion.svg
@@ -81,7 +62,7 @@ const Grid = ({ frameWidth, frameHeight }: any) => {
               y2={line.y2}
               stroke="#00cc88"
               custom={{ lineIndex: i }}
-              variants={draw}
+              variants={drawGridLine}
             />
           );
         })}
@@ -90,8 +71,8 @@ const Grid = ({ frameWidth, frameHeight }: any) => {
           r="10"
           stroke="#00f"
           fill="#00f"
-          variants={draw}
-          custom={{ cxInitial: "0%", cxFinal: "50%" }}
+          variants={moveCircle}
+          custom={{ cxInitial: "20%", cxFinal: "80%" }}
         />
       </motion.svg>
     </div>
