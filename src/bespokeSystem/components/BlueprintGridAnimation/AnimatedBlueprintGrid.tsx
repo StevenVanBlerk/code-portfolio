@@ -4,7 +4,11 @@ import SVGFrame from "./SVGFrame";
 import usePositionDirector from "./helpers/usePositionDirector";
 
 const BlueprintGridAnimation = () => {
-  const positionDirector = usePositionDirector({ columnCount: 3, rowCount: 3 });
+  const positionDirector = usePositionDirector({
+    columnCount: 8,
+    rowCount: 8,
+    nodeCount: 3,
+  });
 
   return (
     <div style={{ width: "fit-content" }}>

@@ -18,36 +18,60 @@ const initialiseGridNodes = ({
   nodeCount,
 }: any): any => {
   const nodes: any = [];
-  for (let i = 0; i < nodeCount; i++) {
-    const nodeId = `node-${i}`;
+  const stepCount = 1000;
+  for (let nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
+    const initialX = Math.floor(Math.random() * columnCount);
+    const initialY = Math.floor(Math.random() * rowCount);
+    const sequence = [{ x: initialX, y: initialY }];
+    let previousStep = sequence[0];
+
+    for (let step = 1; step < stepCount; step++) {
+      const randomAxisNum = Math.floor(Math.random() * 3);
+      const axisChanged =
+        randomAxisNum === 0 ? "none" : randomAxisNum === 1 ? "x" : "y";
+
+      const randomDistance = Math.floor(Math.random() * 5) - 2; // random int from -2 to 2
+
+      const xDiff = axisChanged === "x" ? randomDistance : 0;
+      const yDiff = axisChanged === "y" ? randomDistance : 0;
+      const newX =
+        previousStep.x + xDiff < 0
+          ? 0
+          : previousStep.x + xDiff > columnCount - 1
+          ? columnCount - 1
+          : previousStep.x + xDiff;
+      const newY =
+        previousStep.y + yDiff < 0
+          ? 0
+          : previousStep.y + yDiff > rowCount - 1
+          ? rowCount - 1
+          : previousStep.y + yDiff;
+
+      sequence.push({ x: newX, y: newY });
+      previousStep = sequence[sequence.length - 1];
+    }
+    const nodeId = `node-${nodeIndex}`;
     const node = {
       id: nodeId,
-      adjacentNodes: [],
-      sequence: [{ x: 1, y: 1 }],
+      sequence,
     };
-    // TO-DO: replace this logic
-    if (i === 0) nodes[nodeId] = node;
-    if (i === 1)
-      nodes[nodeId] = {
-        ...node,
-        sequence: [
-          { x: 2, y: 1 },
-          { x: 2, y: 2 },
-          { x: 2, y: 2 },
-          { x: 0, y: 2 },
-          { x: 0, y: 0 },
-        ],
-      };
+
+    nodes[nodeId] = node;
   }
-  //To-do: find all adjacent nodes here
   return nodes;
 };
 
 // Define the custom hook
-const usePositionDirector = ({ columnCount, rowCount }: any): any => {
-  const [grid2D, setGrid2D] = useState<any>(initialiseGrid2D(3, 3));
+const usePositionDirector = ({
+  columnCount,
+  rowCount,
+  nodeCount,
+}: any): any => {
+  const [grid2D, setGrid2D] = useState<any>(
+    initialiseGrid2D(columnCount, columnCount)
+  );
   const [gridNodes, setGridNodes] = useState<any>(
-    initialiseGridNodes({ nodeCount: 2 })
+    initialiseGridNodes({ nodeCount, columnCount, rowCount })
   );
 
   const positionDirector = {
