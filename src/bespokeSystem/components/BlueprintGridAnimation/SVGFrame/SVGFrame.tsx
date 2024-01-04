@@ -19,8 +19,8 @@ const SVGFrame = ({ children }: any) => {
         width={canvasWidth}
         height={canvasHeight}
         viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
-        initial="hidden"
-        animate="visible"
+        initial="initial"
+        animate="animate"
         style={{
           border: "1px dashed red",
           background: "white",

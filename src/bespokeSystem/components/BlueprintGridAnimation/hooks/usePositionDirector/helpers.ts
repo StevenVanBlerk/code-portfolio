@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-
-const initialiseGrid2D = (rowCount: number, columnCount: number): any => {
+export const initialiseGrid2D = (
+  rowCount: number,
+  columnCount: number
+): any => {
   //TO-DO: use this same logic in svg renderer
   const grid: any = {};
   for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -12,13 +13,13 @@ const initialiseGrid2D = (rowCount: number, columnCount: number): any => {
   return grid;
 };
 
-const initialiseGridNodes = ({
+export const initialiseGridNodes = ({
   rowCount,
   columnCount,
   nodeCount,
+  stepCount,
 }: any): any => {
   const nodes: any = [];
-  const stepCount = 1000;
   for (let nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
     const initialX = Math.floor(Math.random() * columnCount);
     const initialY = Math.floor(Math.random() * rowCount);
@@ -61,34 +62,41 @@ const initialiseGridNodes = ({
   return nodes;
 };
 
-// Define the custom hook
-const usePositionDirector = ({
-  columnCount,
-  rowCount,
-  nodeCount,
-}: any): any => {
-  const [grid2D, setGrid2D] = useState<any>(
-    initialiseGrid2D(columnCount, columnCount)
-  );
-  const [gridNodes, setGridNodes] = useState<any>(
-    initialiseGridNodes({ nodeCount, columnCount, rowCount })
-  );
+export const initialiseNodeConnections = ({ gridNodes }: any) => {
+  const gridNodesArr: any = Object.values(gridNodes);
 
-  const positionDirector = {
-    grid2D,
-    gridNodes,
-    rowCount,
-    columnCount,
-  };
+  const connections: any = {};
+  for (let nodeIndex = 0; nodeIndex < gridNodesArr.length; nodeIndex++) {
+    const nodeA = gridNodesArr[nodeIndex];
+    for (
+      let nodeBIndex = nodeIndex + 1;
+      nodeBIndex < gridNodesArr.length;
+      nodeBIndex++
+    ) {
+      const nodeB = gridNodesArr[nodeBIndex];
+      const connectionId = `${nodeA.id}-to-${nodeB.id}`;
 
-  return positionDirector;
+      const sequence = nodeA.sequence.reduce(
+        (
+          connectionStepsAccumulating: any,
+          currentNodeAStep: any,
+          currentStepIndex: number
+        ) => {
+          const currentNodeBStep = nodeB.sequence[currentStepIndex];
+          const connectingLine = {
+            x1: currentNodeAStep.x,
+            y1: currentNodeAStep.y,
+            x2: currentNodeBStep.x,
+            y2: currentNodeBStep.y,
+          };
+          return [...connectionStepsAccumulating, connectingLine];
+        },
+        []
+      );
+
+      connections[connectionId] = { id: connectionId, sequence };
+    }
+  }
+
+  return connections;
 };
-
-export default usePositionDirector;
-
-// SIGN OFF NOTES:
-/** busy initialising positionDirector with hard coded grid values. Continue this then:
- * - Draw nodes based on where positionDirector says points are
- * - Draw lines based on where positionDirector says points are
- * - Add basic automated movement
- */

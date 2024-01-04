@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
-
 import { moveCircle } from "../../helpers/motionVariants";
 
 const Nodes = ({ gridNodes, gridGapSize }: any) => {
-  return Object.entries(gridNodes).map(([key, node]: any, i) => {
+  return Object.entries(gridNodes).map(([key, node]: any) => {
     return (
       <motion.circle
         key={key}

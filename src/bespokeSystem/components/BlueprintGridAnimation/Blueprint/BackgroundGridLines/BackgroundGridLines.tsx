@@ -39,6 +39,8 @@ const BackgroundGridLines = ({
         y2={line.y2}
         stroke="#00cc88"
         custom={{ lineIndex: i }}
+        initial="initial"
+        animate="animate"
         variants={drawGridLine}
       />
     );

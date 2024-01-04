@@ -1,8 +1,18 @@
+const stepDuration = 1;
+
+const getBasicTransition = (sequenceDuration: number) => ({
+  delay: 0.5,
+  ease: "easeInOut",
+  duration: sequenceDuration,
+  repeat: Infinity,
+  repeatType: "reverse",
+});
+
 export const drawGridLine = {
-  hidden: {
+  initial: {
     pathLength: 0,
   },
-  visible: ({ lineIndex }: any) => {
+  animate: ({ lineIndex }: any) => {
     const delay = lineIndex * 0.05;
     return {
       pathLength: 1,
@@ -22,27 +32,38 @@ export const moveCircle = {
   animate: ({ sequence, gridGapSize }: any) => {
     const cxSequence = sequence.map((step: any) => step.x * gridGapSize);
     const cySequence = sequence.map((step: any) => step.y * gridGapSize);
-
-    const stepDuration = 1;
     const sequenceDuration = stepDuration * sequence.length;
+    const basicTransition = getBasicTransition(sequenceDuration);
     return {
       cx: cxSequence,
       cy: cySequence,
       transition: {
-        cx: {
-          delay: 0.5,
-          ease: "easeInOut",
-          duration: sequenceDuration,
-          repeat: Infinity,
-          repeatType: "reverse",
-        },
-        cy: {
-          delay: 0.5,
-          ease: "easeInOut",
-          duration: sequenceDuration,
-          repeat: Infinity,
-          repeatType: "reverse",
-        },
+        cx: basicTransition,
+        cy: basicTransition,
+      },
+    };
+  },
+};
+
+export const moveNodeConnection = {
+  animate: ({ sequence, gridGapSize }: any) => {
+    const x1Sequence = sequence.map((step: any) => step.x1 * gridGapSize);
+    const y1Sequence = sequence.map((step: any) => step.y1 * gridGapSize);
+    const x2Sequence = sequence.map((step: any) => step.x2 * gridGapSize);
+    const y2Sequence = sequence.map((step: any) => step.y2 * gridGapSize);
+
+    const sequenceDuration = stepDuration * sequence.length;
+    const basicTransition = getBasicTransition(sequenceDuration);
+    return {
+      x1: x1Sequence,
+      y1: y1Sequence,
+      x2: x2Sequence,
+      y2: y2Sequence,
+      transition: {
+        x1: basicTransition,
+        y1: basicTransition,
+        x2: basicTransition,
+        y2: basicTransition,
       },
     };
   },

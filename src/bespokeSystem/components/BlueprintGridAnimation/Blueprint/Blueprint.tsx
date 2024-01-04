@@ -1,14 +1,10 @@
 import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
+import ConnectingLines from "./ConnectingLines";
 
-const Blueprint = ({
-  positionDirector,
-  canvasWidth,
-  canvasHeight,
-  gridGapSize,
-}: any) => {
-  const { rowCount, columnCount, gridNodes } = positionDirector;
-
+const Blueprint = ({ positionDirector, gridGapSize }: any) => {
+  const { rowCount, columnCount, gridNodes, nodeConnections } =
+    positionDirector;
   return (
     <>
       <BackgroundGridLines
@@ -17,6 +13,10 @@ const Blueprint = ({
         gridGapSize={gridGapSize}
       />
       <Nodes gridNodes={gridNodes} gridGapSize={gridGapSize} />
+      <ConnectingLines
+        nodeConnections={nodeConnections}
+        gridGapSize={gridGapSize}
+      />
     </>
   );
 };
