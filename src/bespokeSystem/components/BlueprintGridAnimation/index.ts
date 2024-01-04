@@ -1,2 +1,2 @@
-import BlueprintGridAnimation from "./BlueprintGridAnimation";
+import BlueprintGridAnimation from "./AnimatedBlueprintGrid";
 export default BlueprintGridAnimation;
