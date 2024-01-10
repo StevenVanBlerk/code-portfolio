@@ -1,3 +1,9 @@
+import {
+  randomArrayEntry,
+  randomArrayStep,
+  randomInteger,
+} from "@/designSystem/utilities/randomGenerators";
+
 export const initialiseGrid2D = (
   rowCount: number,
   columnCount: number
@@ -20,21 +26,29 @@ export const initialiseGridNodes = ({
   stepCount,
 }: any): any => {
   const nodes: any = [];
+
+  const allowedRadiusValues = [1, 2, 3, 4];
   for (let nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
-    const initialX = Math.floor(Math.random() * columnCount);
-    const initialY = Math.floor(Math.random() * rowCount);
-    const sequence = [{ x: initialX, y: initialY }];
+    const initialRadius = randomArrayEntry(allowedRadiusValues);
+
+    const initialX = randomInteger({ min: 0, max: columnCount - 1 });
+    const initialY = randomInteger({ min: 0, max: rowCount - 1 });
+    const sequence = [
+      {
+        x: initialX,
+        y: initialY,
+        r: initialRadius.entry,
+        initialDelay: randomInteger({ min: 0, max: 5 }),
+      },
+    ];
     let previousStep = sequence[0];
 
     for (let step = 1; step < stepCount; step++) {
-      const randomAxisNum = Math.floor(Math.random() * 3);
-      const axisChanged =
-        randomAxisNum === 0 ? "none" : randomAxisNum === 1 ? "x" : "y";
+      const displacementAxis = randomArrayEntry(["none", "x", "y"]).entry;
+      const randomDistance = randomInteger({ min: -4, max: 4 });
 
-      const randomDistance = Math.floor(Math.random() * 5) - 2; // random int from -2 to 2
-
-      const xDiff = axisChanged === "x" ? randomDistance : 0;
-      const yDiff = axisChanged === "y" ? randomDistance : 0;
+      const xDiff = displacementAxis === "x" ? randomDistance : 0;
+      const yDiff = displacementAxis === "y" ? randomDistance : 0;
       const newX =
         previousStep.x + xDiff < 0
           ? 0
@@ -48,7 +62,17 @@ export const initialiseGridNodes = ({
           ? rowCount - 1
           : previousStep.y + yDiff;
 
-      sequence.push({ x: newX, y: newY });
+      const newRadius = randomArrayStep({
+        array: allowedRadiusValues,
+        currentIndex: initialRadius.index,
+      }).entry;
+
+      sequence.push({
+        x: newX,
+        y: newY,
+        r: newRadius,
+        initialDelay: previousStep.initialDelay,
+      });
       previousStep = sequence[sequence.length - 1];
     }
     const nodeId = `node-${nodeIndex}`;
@@ -60,6 +84,15 @@ export const initialiseGridNodes = ({
     nodes[nodeId] = node;
   }
   return nodes;
+};
+
+const calculatePathLength = ({ x1, y1, x2, y2 }: any) => {
+  const deltaX = x2 - x1;
+  const deltaY = y2 - y1;
+  const deltaXSquare = Math.pow(deltaX, 2);
+  const deltaYSquare = Math.pow(deltaY, 2);
+  const distance = Math.sqrt(deltaXSquare + deltaYSquare);
+  return distance;
 };
 
 export const initialiseNodeConnections = ({ gridNodes }: any) => {
@@ -83,11 +116,17 @@ export const initialiseNodeConnections = ({ gridNodes }: any) => {
           currentStepIndex: number
         ) => {
           const currentNodeBStep = nodeB.sequence[currentStepIndex];
+
+          const x1 = currentNodeAStep.x;
+          const y1 = currentNodeAStep.y;
+          const x2 = currentNodeBStep.x;
+          const y2 = currentNodeBStep.y;
           const connectingLine = {
-            x1: currentNodeAStep.x,
-            y1: currentNodeAStep.y,
-            x2: currentNodeBStep.x,
-            y2: currentNodeBStep.y,
+            x1,
+            y1,
+            x2,
+            y2,
+            pathLength: calculatePathLength({ x1, y1, x2, y2 }),
           };
           return [...connectionStepsAccumulating, connectingLine];
         },

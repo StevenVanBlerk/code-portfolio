@@ -4,72 +4,80 @@
  * Moving to SSR might be possible if I replace these variants with in line props
  */
 
-const stepDuration = 0.2;
+const stepDuration = 2;
 
-const getBasicTransition = (sequenceDuration: number) => ({
-  delay: 0.1,
+// TO-DO: create a more elastic transition
+const getCommonTransition = (sequenceDuration: number) => ({
   ease: "easeInOut",
   duration: sequenceDuration,
   repeat: Infinity,
   repeatType: "reverse",
 });
 
-export const drawGridLine = {
-  initial: {
-    pathLength: 0,
-  },
-  animate: ({ lineIndex }: any) => {
-    const delay = lineIndex * 0.05;
-    return {
-      pathLength: 1,
-      transition: {
-        pathLength: {
-          delay,
-          type: "spring",
-          duration: 0.2,
-          bounce: 0,
-        },
-      },
-    };
-  },
-};
-
-export const moveCircle = {
-  animate: ({ sequence, gridGapSize }: any) => {
+/**"delay bug" notes:
+ * When nodes have an individual delay, the connecting lines animate before the nodes move. Lines have to worry about 2 separate delays (each node), making this a tough fix
+ */
+export const animateNode = {
+  animate: ({
+    sequence,
+    gridGapSize,
+    radiusMultiplier,
+    isNucleus = false,
+  }: any) => {
+    const initialDelay = 0; //sequence[0].initialDelay; // disabled until delay bug is fixed, see bug notes above
     const cxSequence = sequence.map((step: any) => step.x * gridGapSize);
     const cySequence = sequence.map((step: any) => step.y * gridGapSize);
+    const rSequence = sequence.map((step: any) => {
+      return step.r * radiusMultiplier;
+    });
     const sequenceDuration = stepDuration * sequence.length;
-    const basicTransition = getBasicTransition(sequenceDuration);
+    const commonTransition = getCommonTransition(sequenceDuration);
+    const basicTransitionWithDelay = {
+      ...commonTransition,
+      delay: initialDelay,
+    };
     return {
       cx: cxSequence,
       cy: cySequence,
+      r: isNucleus ? undefined : rSequence,
       transition: {
-        cx: basicTransition,
-        cy: basicTransition,
+        cx: basicTransitionWithDelay,
+        cy: basicTransitionWithDelay,
+        r: isNucleus ? undefined : basicTransitionWithDelay,
       },
     };
   },
 };
 
-export const moveNodeConnection = {
+const normaliseOpacity = (pathLength: number) => {
+  // Ensure opacity is between 0 and 1
+  return Math.max(0, 1 - pathLength / 2);
+};
+
+export const animateNodeConnection = {
   animate: ({ sequence, gridGapSize }: any) => {
     const x1Sequence = sequence.map((step: any) => step.x1 * gridGapSize);
     const y1Sequence = sequence.map((step: any) => step.y1 * gridGapSize);
     const x2Sequence = sequence.map((step: any) => step.x2 * gridGapSize);
     const y2Sequence = sequence.map((step: any) => step.y2 * gridGapSize);
+    const opacitySequence = sequence.map((step: any) =>
+      normaliseOpacity(step.pathLength)
+    );
 
     const sequenceDuration = stepDuration * sequence.length;
-    const basicTransition = getBasicTransition(sequenceDuration);
+    const commonTransition = getCommonTransition(sequenceDuration);
     return {
       x1: x1Sequence,
       y1: y1Sequence,
       x2: x2Sequence,
       y2: y2Sequence,
+      opacity: opacitySequence,
       transition: {
-        x1: basicTransition,
-        y1: basicTransition,
-        x2: basicTransition,
-        y2: basicTransition,
+        x1: commonTransition,
+        y1: commonTransition,
+        x2: commonTransition,
+        y2: commonTransition,
+        opacity: commonTransition, //TO-DO: custom transition that only cares for short path lengths
       },
     };
   },

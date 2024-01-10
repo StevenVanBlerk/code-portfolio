@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { moveNodeConnection } from "../../helpers/motionVariants";
+import { animateNodeConnection } from "../../helpers/motionVariants";
 
 const ConnectingLines = ({ nodeConnections, gridGapSize }: any) => {
   return Object.entries(nodeConnections).map(([key, line]: any) => {
     return (
       <motion.line
-        key={key} //?
-        stroke="#f00"
+        key={key}
+        stroke="#000"
         custom={{ sequence: line.sequence, gridGapSize }}
-        variants={moveNodeConnection}
+        variants={animateNodeConnection}
       />
     );
   });

@@ -4,7 +4,7 @@ import {
   initialiseNodeConnections,
 } from "./helpers";
 
-const usePositionDirector = ({
+const useDirector = ({
   columnCount,
   rowCount,
   nodeCount,
@@ -19,7 +19,7 @@ const usePositionDirector = ({
   });
   const nodeConnections = initialiseNodeConnections({ gridNodes });
 
-  const positionDirector = {
+  const director = {
     grid2D,
     gridNodes,
     nodeConnections,
@@ -27,7 +27,7 @@ const usePositionDirector = ({
     columnCount,
   };
 
-  return positionDirector;
+  return director;
 };
 
-export default usePositionDirector;
+export default useDirector;

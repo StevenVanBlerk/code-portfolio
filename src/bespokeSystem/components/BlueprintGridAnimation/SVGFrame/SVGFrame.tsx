@@ -1,33 +1,30 @@
 import { motion } from "framer-motion";
 
-const canvasHeight = 1000; //px
-const canvasWidth = 1000; //px
-const frameMarginWidth = 20; //px
-
-const SVGFrame = ({ children }: any) => {
+const SVGFrame = ({
+  children,
+  canvasHeight,
+  canvasWidth,
+  frameWidth,
+  canvasMargin,
+}: any) => {
   return (
     <div
       style={{
-        height: canvasHeight + frameMarginWidth + frameMarginWidth,
-        width: canvasWidth + frameMarginWidth + frameMarginWidth,
-        background: "orange",
-        justifySelf: "center",
-        padding: `${frameMarginWidth}px`,
+        height: canvasHeight + frameWidth + frameWidth,
+        width: canvasWidth + frameWidth + frameWidth,
+        background: "white",
+        padding: `${frameWidth}px`,
       }}
     >
       <motion.svg
         width={canvasWidth}
         height={canvasHeight}
-        viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
+        viewBox={`-${canvasMargin} -${canvasMargin} ${canvasWidth} ${canvasHeight}`}
+        // viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
         initial="initial"
         animate="animate"
-        style={{
-          border: "1px dashed red",
-          background: "white",
-          // margin: `${frameMarginWidth}px`,
-        }}
       >
-        {children({ canvasHeight, canvasWidth })}
+        {children}
       </motion.svg>
     </div>
   );

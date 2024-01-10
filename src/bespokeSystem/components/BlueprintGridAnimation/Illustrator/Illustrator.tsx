@@ -2,9 +2,8 @@ import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
 import ConnectingLines from "./ConnectingLines";
 
-const Blueprint = ({ positionDirector, gridGapSize }: any) => {
-  const { rowCount, columnCount, gridNodes, nodeConnections } =
-    positionDirector;
+const Illustrator = ({ director, gridGapSize, radiusMultiplier }: any) => {
+  const { rowCount, columnCount, gridNodes, nodeConnections } = director;
   return (
     <>
       <BackgroundGridLines
@@ -12,13 +11,17 @@ const Blueprint = ({ positionDirector, gridGapSize }: any) => {
         columnCount={columnCount}
         gridGapSize={gridGapSize}
       />
-      <Nodes gridNodes={gridNodes} gridGapSize={gridGapSize} />
       <ConnectingLines
         nodeConnections={nodeConnections}
         gridGapSize={gridGapSize}
+      />
+      <Nodes
+        gridNodes={gridNodes}
+        gridGapSize={gridGapSize}
+        radiusMultiplier={radiusMultiplier}
       />
     </>
   );
 };
 
-export default Blueprint;
+export default Illustrator;

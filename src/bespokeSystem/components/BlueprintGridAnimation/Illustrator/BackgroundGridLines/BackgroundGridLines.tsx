@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 
-import { drawGridLine } from "../../helpers/motionVariants";
-
 const BackgroundGridLines = ({
   rowCount,
   columnCount,
@@ -10,8 +8,8 @@ const BackgroundGridLines = ({
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {
-      x1: "0%",
-      x2: "100%",
+      x1: 0,
+      x2: columnCount * gridGapSize - gridGapSize,
       y1: i * gridGapSize,
       y2: i * gridGapSize,
       key: `horizontal-line-${i}`,
@@ -20,8 +18,8 @@ const BackgroundGridLines = ({
   }
   for (let i = 0; i < columnCount; i++) {
     const verticalLine = {
-      y1: "0%",
-      y2: "100%",
+      y1: 0,
+      y2: rowCount * gridGapSize - gridGapSize,
       x1: i * gridGapSize,
       x2: i * gridGapSize,
       key: `vertical-line-${i}`,
@@ -31,17 +29,13 @@ const BackgroundGridLines = ({
 
   return lines.map((line, i) => {
     return (
-      <motion.line
+      <line
         key={line.key}
         x1={line.x1}
         y1={line.y1}
         x2={line.x2}
         y2={line.y2}
-        stroke="#00cc88"
-        custom={{ lineIndex: i }}
-        initial="initial"
-        animate="animate"
-        variants={drawGridLine}
+        stroke="#eee"
       />
     );
   });
