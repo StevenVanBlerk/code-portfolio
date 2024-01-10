@@ -6,7 +6,7 @@ const ConnectingLines = ({ nodeConnections, gridGapSize }: any) => {
     return (
       <motion.line
         key={key}
-        stroke="#000"
+        stroke="#fff"
         custom={{ sequence: line.sequence, gridGapSize }}
         variants={animateNodeConnection}
       />

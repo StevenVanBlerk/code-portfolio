@@ -7,7 +7,7 @@ const Nodes = ({ gridNodes, gridGapSize, radiusMultiplier }: any) => {
       <>
         <motion.circle
           key={`node-${key}`}
-          stroke="#000"
+          stroke="#fff"
           strokeWidth={1.5}
           fill="transparent"
           initial="initial"
@@ -21,10 +21,10 @@ const Nodes = ({ gridNodes, gridGapSize, radiusMultiplier }: any) => {
         />
         <motion.circle
           key={`nucleus-${key}`}
-          stroke="#000"
+          stroke="#fff"
           strokeWidth={2}
           r={1}
-          fill="#000"
+          fill="#fff"
           initial="initial"
           animate="animate"
           variants={animateNode}

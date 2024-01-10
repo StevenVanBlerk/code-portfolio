@@ -35,7 +35,7 @@ const BackgroundGridLines = ({
         y1={line.y1}
         x2={line.x2}
         y2={line.y2}
-        stroke="#eee"
+        stroke="#222"
       />
     );
   });

@@ -6,11 +6,11 @@ import useDirector from "./hooks/usePositionDirector/useDirector";
 
 const columnCount = 10;
 const rowCount = 10;
-const nodeCount = 30;
+const nodeCount = 20;
 const stepCount = 10;
 
 // Illustration values
-const gridGapSize = 50; //px
+const gridGapSize = 100; //px
 const canvasHeight = rowCount * gridGapSize; //px
 const canvasWidth = columnCount * gridGapSize; //px
 const frameWidth = 0; //px
@@ -21,12 +21,7 @@ const BlueprintAnimation = () => {
   const director = useDirector({ columnCount, rowCount, nodeCount, stepCount });
 
   return (
-    <div
-      style={{
-        padding: gridGapSize,
-        margin: gridGapSize,
-      }}
-    >
+    <div>
       <SVGFrame
         canvasWidth={canvasWidth}
         canvasHeight={canvasHeight}

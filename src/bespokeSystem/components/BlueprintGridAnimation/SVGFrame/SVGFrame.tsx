@@ -12,15 +12,13 @@ const SVGFrame = ({
       style={{
         height: canvasHeight + frameWidth + frameWidth,
         width: canvasWidth + frameWidth + frameWidth,
-        background: "white",
         padding: `${frameWidth}px`,
       }}
     >
       <motion.svg
         width={canvasWidth}
         height={canvasHeight}
-        viewBox={`-${canvasMargin} -${canvasMargin} ${canvasWidth} ${canvasHeight}`}
-        // viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
+        viewBox={`-${canvasMargin} -${canvasMargin} ${canvasWidth} ${canvasHeight}`} // ensuring edges of nodes fit inside canvas
         initial="initial"
         animate="animate"
       >

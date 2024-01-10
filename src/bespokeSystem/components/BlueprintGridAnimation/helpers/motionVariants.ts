@@ -15,7 +15,8 @@ const getCommonTransition = (sequenceDuration: number) => ({
 });
 
 /**"delay bug" notes:
- * When nodes have an individual delay, the connecting lines animate before the nodes move. Lines have to worry about 2 separate delays (each node), making this a tough fix
+ * When nodes have an individual delay, the connecting lines animate before the nodes move. Lines have to worry about 2 separate delays (each node), making this a tough fix.
+ * A potential fix would be to add a 2nd "animate" state to lines where "AnimateA" animates x1,y1 changes and "AnimateB" animates x2,y2
  */
 export const animateNode = {
   animate: ({

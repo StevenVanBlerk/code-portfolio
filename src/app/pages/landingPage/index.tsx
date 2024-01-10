@@ -7,7 +7,7 @@ import WorkExperienceOption1 from "./WorkExperienceOption1";
 
 const LandingPage = () => {
   return (
-    <div className="grid gap-10 bg-black">
+    <div className="grid gap-10" style={{ background: "#1e1e1e" }}>
       <IntroductionOption1 />
       <BlueprintAnimation />
       <SkillsOption1 />
