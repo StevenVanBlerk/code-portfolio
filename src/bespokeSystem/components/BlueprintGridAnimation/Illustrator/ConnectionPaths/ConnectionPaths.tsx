@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { animateNodeConnection } from "../../helpers/motionVariants";
 
-const ConnectingLines = ({ nodeConnections, gridGapSize }: any) => {
+const ConnectionPaths = ({ nodeConnections, gridGapSize }: any) => {
   return Object.entries(nodeConnections).map(([key, line]: any) => {
     return (
       <motion.line
@@ -14,4 +14,4 @@ const ConnectingLines = ({ nodeConnections, gridGapSize }: any) => {
   });
 };
 
-export default ConnectingLines;
+export default ConnectionPaths;

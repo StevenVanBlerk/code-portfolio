@@ -1,6 +1,6 @@
 import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
-import ConnectingLines from "./ConnectingLines";
+import ConnectionPaths from "./ConnectionPaths";
 
 const Illustrator = ({ director, gridGapSize, radiusMultiplier }: any) => {
   const { rowCount, columnCount, gridNodes, nodeConnections } = director;
@@ -11,7 +11,7 @@ const Illustrator = ({ director, gridGapSize, radiusMultiplier }: any) => {
         columnCount={columnCount}
         gridGapSize={gridGapSize}
       />
-      <ConnectingLines
+      <ConnectionPaths
         nodeConnections={nodeConnections}
         gridGapSize={gridGapSize}
       />
