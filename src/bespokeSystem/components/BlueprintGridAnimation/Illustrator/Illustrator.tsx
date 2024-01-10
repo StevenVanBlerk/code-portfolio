@@ -2,7 +2,12 @@ import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
 import ConnectionPaths from "./ConnectionPaths";
 
-const Illustrator = ({ director, gridGapSize, radiusMultiplier }: any) => {
+const Illustrator = ({
+  director,
+  gridGapSize,
+  radiusMultiplier,
+  connectionPathMaxLength,
+}: any) => {
   const { rowCount, columnCount, gridNodes, nodeConnections } = director;
   return (
     <>
@@ -11,9 +16,11 @@ const Illustrator = ({ director, gridGapSize, radiusMultiplier }: any) => {
         columnCount={columnCount}
         gridGapSize={gridGapSize}
       />
+      {/* rendering ConnectionPaths first to allow Nodes to visually exist above paths */}
       <ConnectionPaths
         nodeConnections={nodeConnections}
         gridGapSize={gridGapSize}
+        connectionPathMaxLength={connectionPathMaxLength}
       />
       <Nodes
         gridNodes={gridNodes}

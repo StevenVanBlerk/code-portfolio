@@ -9,6 +9,7 @@ const stepDuration = 2;
 // TO-DO: create a more elastic transition
 const getCommonTransition = (sequenceDuration: number) => ({
   ease: "easeInOut",
+  // type: "inertia",
   duration: sequenceDuration,
   repeat: Infinity,
   repeatType: "reverse",
@@ -18,16 +19,32 @@ const getCommonTransition = (sequenceDuration: number) => ({
  * When nodes have an individual delay, the connecting lines animate before the nodes move. Lines have to worry about 2 separate delays (each node), making this a tough fix.
  * A potential fix would be to add a 2nd "animate" state to lines where "AnimateA" animates x1,y1 changes and "AnimateB" animates x2,y2
  */
-export const animateNode = {
-  animate: ({
-    sequence,
-    gridGapSize,
-    radiusMultiplier,
-    isNucleus = false,
-  }: any) => {
+export const animateNodeGroup = {
+  animate: ({ sequence, gridGapSize }: any) => {
     const initialDelay = 0; //sequence[0].initialDelay; // disabled until delay bug is fixed, see bug notes above
     const cxSequence = sequence.map((step: any) => step.x * gridGapSize);
     const cySequence = sequence.map((step: any) => step.y * gridGapSize);
+    const sequenceDuration = stepDuration * sequence.length;
+    const commonTransition = getCommonTransition(sequenceDuration);
+    const basicTransitionWithDelay = {
+      ...commonTransition,
+      delay: initialDelay,
+    };
+    return {
+      x: cxSequence,
+      y: cySequence,
+      transition: {
+        x: basicTransitionWithDelay,
+        y: basicTransitionWithDelay,
+      },
+    };
+  },
+};
+
+export const animateNodeRadius = {
+  animate: ({ sequence, radiusMultiplier, isNucleus = false }: any) => {
+    const initialDelay = 0; //sequence[0].initialDelay; // disabled until delay bug is fixed, see bug notes above
+
     const rSequence = sequence.map((step: any) => {
       return step.r * radiusMultiplier;
     });
@@ -38,31 +55,41 @@ export const animateNode = {
       delay: initialDelay,
     };
     return {
-      cx: cxSequence,
-      cy: cySequence,
-      r: isNucleus ? undefined : rSequence,
+      r: rSequence,
       transition: {
-        cx: basicTransitionWithDelay,
-        cy: basicTransitionWithDelay,
-        r: isNucleus ? undefined : basicTransitionWithDelay,
+        r: basicTransitionWithDelay,
       },
     };
   },
 };
 
-const normaliseOpacity = (pathLength: number) => {
-  // Ensure opacity is between 0 and 1
-  return Math.max(0, 1 - pathLength / 2);
+const normaliseOpacity = ({
+  pathLength,
+  connectionPathMaxLength, //gaps,
+}: {
+  pathLength: number;
+  connectionPathMaxLength: number; //gaps,
+}) => {
+  // Ensure pathLength is within valid range
+  pathLength = Math.max(0, Math.min(pathLength, connectionPathMaxLength));
+
+  // Calculate opacity using linear interpolation
+  let opacity = 1 - pathLength / connectionPathMaxLength;
+
+  return Math.max(0, opacity);
 };
 
 export const animateNodeConnection = {
-  animate: ({ sequence, gridGapSize }: any) => {
+  animate: ({ sequence, gridGapSize, connectionPathMaxLength }: any) => {
     const x1Sequence = sequence.map((step: any) => step.x1 * gridGapSize);
     const y1Sequence = sequence.map((step: any) => step.y1 * gridGapSize);
     const x2Sequence = sequence.map((step: any) => step.x2 * gridGapSize);
     const y2Sequence = sequence.map((step: any) => step.y2 * gridGapSize);
     const opacitySequence = sequence.map((step: any) =>
-      normaliseOpacity(step.pathLength)
+      normaliseOpacity({
+        pathLength: step.pathLength,
+        connectionPathMaxLength,
+      })
     );
 
     const sequenceDuration = stepDuration * sequence.length;

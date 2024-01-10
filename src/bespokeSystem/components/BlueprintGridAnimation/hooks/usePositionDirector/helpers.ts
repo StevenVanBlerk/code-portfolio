@@ -127,6 +127,7 @@ export const initialiseNodeConnections = ({ gridNodes }: any) => {
             x2,
             y2,
             pathLength: calculatePathLength({ x1, y1, x2, y2 }),
+            // previousPathLength: calculatePathLength({ x1, y1, x2, y2 }),
           };
           return [...connectionStepsAccumulating, connectingLine];
         },
