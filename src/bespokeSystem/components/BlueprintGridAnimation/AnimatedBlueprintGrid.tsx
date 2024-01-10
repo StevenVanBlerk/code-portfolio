@@ -1,4 +1,5 @@
 "use client"; // deactivating SSR. Alternative approach --> https://www.framer.com/motion/component/##server-side-rendering
+
 import Blueprint from "./Blueprint";
 import SVGFrame from "./SVGFrame";
 import usePositionDirector from "./hooks/usePositionDirector/usePositionDirector";
@@ -39,5 +40,5 @@ export default BlueprintGridAnimation;
  * - refactor
  * - touch up visuals
  * - fit frame properly
- * 
+ *
  */

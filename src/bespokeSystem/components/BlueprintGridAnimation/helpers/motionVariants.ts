@@ -1,7 +1,13 @@
-const stepDuration = 1;
+/** framer-motion and SSR notes:
+ * framer-motion seems to only use CSR when using variants (to be confirmed).
+ * Having some components use in line animation seems to conflict if others are using variants to describe animation.
+ * Moving to SSR might be possible if I replace these variants with in line props
+ */
+
+const stepDuration = 0.2;
 
 const getBasicTransition = (sequenceDuration: number) => ({
-  delay: 0.5,
+  delay: 0.1,
   ease: "easeInOut",
   duration: sequenceDuration,
   repeat: Infinity,
