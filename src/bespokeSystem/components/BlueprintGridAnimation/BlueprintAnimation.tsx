@@ -1,7 +1,6 @@
 "use client"; // deactivating SSR. Alternative approach --> https://www.framer.com/motion/component/##server-side-rendering
 
 import Illustrator from "./Illustrator";
-import SVGFrame from "./SVGFrame";
 import useDirector from "./hooks/usePositionDirector/useDirector";
 
 const columnCount = 10;
@@ -31,24 +30,17 @@ const BlueprintAnimation = () => {
   });
 
   return (
-    <div>
-      <SVGFrame
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
-        frameWidth={frameWidth}
-        canvasMargin={canvasMargin}
-      >
-        <Illustrator
-          director={director}
-          gridGapSize={gridGapSize}
-          radiusMultiplier={radiusMultiplier}
-          canvasWidth={canvasWidth}
-          canvasHeight={canvasHeight}
-          connectionPathMaxLength={connectionPathMaxLength}
-          nodeMaxDisplacement={nodeMaxDisplacement}
-        />
-      </SVGFrame>
-    </div>
+    <Illustrator
+      canvasWidth={canvasWidth}
+      canvasHeight={canvasHeight}
+      frameWidth={frameWidth}
+      canvasMargin={canvasMargin}
+      director={director}
+      gridGapSize={gridGapSize}
+      radiusMultiplier={radiusMultiplier}
+      connectionPathMaxLength={connectionPathMaxLength}
+      nodeMaxDisplacement={nodeMaxDisplacement}
+    />
   );
 };
 
