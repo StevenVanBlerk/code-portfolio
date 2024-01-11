@@ -8,8 +8,7 @@ const stepDuration = 2;
 
 // TO-DO: create a more elastic transition
 const getCommonTransition = (sequenceDuration: number) => ({
-  ease: "easeInOut",
-  // type: "inertia",
+  ease: "easeInOut", // https://www.framer.com/motion/easing-functions/
   duration: sequenceDuration,
   repeat: Infinity,
   repeatType: "reverse",
@@ -21,7 +20,8 @@ const getCommonTransition = (sequenceDuration: number) => ({
  */
 export const animateNodeGroup = {
   animate: ({ sequence, gridGapSize }: any) => {
-    const initialDelay = 0; //sequence[0].initialDelay; // disabled until delay bug is fixed, see bug notes above
+    // const initialDelay = 0; //sequence[0].initialDelay; // disabled until delay bug is fixed, see bug notes above
+    const initialDelay = sequence[0].initialDelay;
     const cxSequence = sequence.map((step: any) => step.x * gridGapSize);
     const cySequence = sequence.map((step: any) => step.y * gridGapSize);
     const sequenceDuration = stepDuration * sequence.length;
@@ -80,32 +80,46 @@ const normaliseOpacity = ({
 };
 
 export const animateNodeConnection = {
-  animate: ({ sequence, gridGapSize, connectionPathMaxLength }: any) => {
-    const x1Sequence = sequence.map((step: any) => step.x1 * gridGapSize);
-    const y1Sequence = sequence.map((step: any) => step.y1 * gridGapSize);
-    const x2Sequence = sequence.map((step: any) => step.x2 * gridGapSize);
-    const y2Sequence = sequence.map((step: any) => step.y2 * gridGapSize);
-    const opacitySequence = sequence.map((step: any) =>
-      normaliseOpacity({
-        pathLength: step.pathLength,
-        connectionPathMaxLength,
-      })
-    );
+  animateA: ({ sequenceA, gridGapSize, connectionPathMaxLength }: any) => {
+    const x1Sequence = sequenceA.map((step: any) => step.x * gridGapSize); //TO-DO ADD DELAY TO ANIMATEA and ANIMATEB
+    const y1Sequence = sequenceA.map((step: any) => step.y * gridGapSize);
+    const initialDelay = sequenceA[0].initialDelay;
+    // const opacitySequence = sequenceA.map((step: any) =>
+    //   normaliseOpacity({
+    //     pathLength: step.pathLength, //path length no longer available here
+    //     connectionPathMaxLength,
+    //   })
+    // );
 
-    const sequenceDuration = stepDuration * sequence.length;
+    const sequenceDuration = stepDuration * sequenceA.length;
     const commonTransition = getCommonTransition(sequenceDuration);
+
     return {
       x1: x1Sequence,
       y1: y1Sequence,
+      opacity: 0.01,
+      //opacitySequence,
+      transition: {
+        x1: { ...commonTransition, delay: initialDelay },
+        y1: { ...commonTransition, delay: initialDelay },
+        // opacity: commonTransition, //TO-DO: custom transition that only cares for short path lengths
+      },
+    };
+  },
+  animateB: ({ sequenceB, gridGapSize, connectionPathMaxLength }: any) => {
+    const x2Sequence = sequenceB.map((step: any) => step.x * gridGapSize);
+    const y2Sequence = sequenceB.map((step: any) => step.y * gridGapSize);
+    const initialDelay = sequenceB[0].initialDelay;
+
+    const sequenceDuration = stepDuration * sequenceB.length;
+    const commonTransition = getCommonTransition(sequenceDuration);
+    return {
       x2: x2Sequence,
       y2: y2Sequence,
-      opacity: opacitySequence,
+      delay: initialDelay,
       transition: {
-        x1: commonTransition,
-        y1: commonTransition,
-        x2: commonTransition,
-        y2: commonTransition,
-        opacity: commonTransition, //TO-DO: custom transition that only cares for short path lengths
+        x2: { ...commonTransition, delay: initialDelay },
+        y2: { ...commonTransition, delay: initialDelay },
       },
     };
   },

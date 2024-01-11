@@ -24,6 +24,7 @@ export const initialiseGridNodes = ({
   columnCount,
   nodeCount,
   stepCount,
+  nodeMaxDisplacement,
 }: any): any => {
   const nodes: any = [];
 
@@ -45,7 +46,10 @@ export const initialiseGridNodes = ({
 
     for (let step = 1; step < stepCount; step++) {
       const displacementAxis = randomArrayEntry(["none", "x", "y"]).entry;
-      const randomDistance = randomInteger({ min: -4, max: 4 });
+      const randomDistance = randomInteger({
+        min: -nodeMaxDisplacement,
+        max: nodeMaxDisplacement,
+      });
 
       const xDiff = displacementAxis === "x" ? randomDistance : 0;
       const yDiff = displacementAxis === "y" ? randomDistance : 0;
@@ -109,6 +113,31 @@ export const initialiseNodeConnections = ({ gridNodes }: any) => {
       const nodeB = gridNodesArr[nodeBIndex];
       const connectionId = `${nodeA.id}-to-${nodeB.id}`;
 
+      const sequenceA = nodeA.sequence;
+      const sequenceB = nodeB.sequence;
+
+      connections[connectionId] = { id: connectionId, sequenceA, sequenceB };
+    }
+  }
+  console.log("conns", { connections });
+  return connections;
+};
+
+/*
+export const initialiseNodeConnections = ({ gridNodes }: any) => {
+  const gridNodesArr: any = Object.values(gridNodes);
+
+  const connections: any = {};
+  for (let nodeIndex = 0; nodeIndex < gridNodesArr.length; nodeIndex++) {
+    const nodeA = gridNodesArr[nodeIndex];
+    for (
+      let nodeBIndex = nodeIndex + 1;
+      nodeBIndex < gridNodesArr.length;
+      nodeBIndex++
+    ) {
+      const nodeB = gridNodesArr[nodeBIndex];
+      const connectionId = `${nodeA.id}-to-${nodeB.id}`;
+
       const sequence = nodeA.sequence.reduce(
         (
           connectionStepsAccumulating: any,
@@ -139,4 +168,4 @@ export const initialiseNodeConnections = ({ gridNodes }: any) => {
   }
 
   return connections;
-};
+};*/

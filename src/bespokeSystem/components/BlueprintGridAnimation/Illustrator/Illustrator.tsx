@@ -18,6 +18,7 @@ const Illustrator = ({
       />
       {/* rendering ConnectionPaths first to allow Nodes to visually exist above paths */}
       <ConnectionPaths
+        gridNodes={gridNodes}
         nodeConnections={nodeConnections}
         gridGapSize={gridGapSize}
         connectionPathMaxLength={connectionPathMaxLength}

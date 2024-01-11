@@ -1,22 +1,18 @@
-import { motion } from "framer-motion";
-import { animateNodeConnection } from "../../helpers/motionVariants";
+import Path from "./Path";
 
 const ConnectionPaths = ({
   nodeConnections,
   gridGapSize,
   connectionPathMaxLength,
+  gridNodes,
 }: any) => {
   return Object.entries(nodeConnections).map(([key, line]: any) => {
     return (
-      <motion.line
+      <Path
         key={key}
-        stroke="#fff"
-        custom={{
-          sequence: line.sequence,
-          gridGapSize,
-          connectionPathMaxLength,
-        }}
-        variants={animateNodeConnection}
+        line={line}
+        gridGapSize={gridGapSize}
+        connectionPathMaxLength={connectionPathMaxLength}
       />
     );
   });

@@ -9,6 +9,7 @@ const useDirector = ({
   rowCount,
   nodeCount,
   stepCount,
+  nodeMaxDisplacement,
 }: any): any => {
   const grid2D = initialiseGrid2D(columnCount, columnCount);
   const gridNodes = initialiseGridNodes({
@@ -16,6 +17,7 @@ const useDirector = ({
     columnCount,
     rowCount,
     stepCount,
+    nodeMaxDisplacement,
   });
   const nodeConnections = initialiseNodeConnections({ gridNodes });
 
