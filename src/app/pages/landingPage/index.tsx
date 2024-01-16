@@ -7,13 +7,13 @@ import WorkExperienceOption1 from "./WorkExperienceOption1";
 
 const LandingPage = () => {
   return (
-    <div className="grid gap-10" style={{ background: "#1e1e1e" }}>
-      <IntroductionOption1 />
+    <div className="grid gap-10">
+      {/* <IntroductionOption1 /> */}
       <BlueprintAnimation />
-      <SkillsOption1 />
-      <WorkExperienceOption1 />
-      <EducationOption1 />
-      <ContactMeOption1 />
+      {/* <SkillsOption1 /> */}
+      {/* <WorkExperienceOption1 /> */}
+      {/* <EducationOption1 /> */}
+      {/* <ContactMeOption1 /> */}
     </div>
   );
 };

@@ -2,9 +2,14 @@ import { motion } from "framer-motion";
 import {
   animateNodeGroup,
   animateNodeRadius,
-} from "../../helpers/motionVariants";
+} from "../../helpers/motionVariants/motionVariants";
 
-const Nodes = ({ gridNodes, gridGapSize, radiusMultiplier }: any) => {
+const Nodes = ({
+  gridNodes,
+  gridGapSize,
+  radiusMultiplier,
+  stepDuration,
+}: any) => {
   return Object.entries(gridNodes).map(([key, node]: any) => {
     return (
       <motion.g
@@ -15,6 +20,7 @@ const Nodes = ({ gridNodes, gridGapSize, radiusMultiplier }: any) => {
         custom={{
           sequence: node.sequence,
           gridGapSize: gridGapSize,
+          stepDuration,
         }}
       >
         <motion.circle
@@ -27,6 +33,7 @@ const Nodes = ({ gridNodes, gridGapSize, radiusMultiplier }: any) => {
           custom={{
             sequence: node.sequence,
             radiusMultiplier,
+            stepDuration,
           }}
         />
         <circle stroke="#fff" strokeWidth={2} r={1} fill="#fff" />
