@@ -1,4 +1,4 @@
-import BlueprintAnimation from "@/bespokeSystem/components/BlueprintGridAnimation";
+import GenerativeBlueprint from "@/bespokeSystem/components/BlueprintGridAnimation";
 import ContactMeOption1 from "./ContactMeOption1";
 import EducationOption1 from "./EducationOption1";
 import IntroductionOption1 from "./IntroductionOption1";
@@ -9,7 +9,7 @@ const LandingPage = () => {
   return (
     <div className="grid gap-10">
       {/* <IntroductionOption1 /> */}
-      <BlueprintAnimation />
+      <GenerativeBlueprint />
       {/* <SkillsOption1 /> */}
       {/* <WorkExperienceOption1 /> */}
       {/* <EducationOption1 /> */}

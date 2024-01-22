@@ -1,2 +1,2 @@
-import BlueprintAnimation from "./BlueprintAnimation";
-export default BlueprintAnimation;
+import GenerativeBlueprint from "./GenerativeBlueprint";
+export default GenerativeBlueprint;

@@ -24,7 +24,7 @@ const radiusMultiplier = 5;
 const connectionMinLength = 0.5 * gridGapSize;
 const connectionMaxLength = 3.5 * gridGapSize;
 
-const BlueprintAnimation = () => {
+const GenerativeBlueprint = () => {
   const director = useDirector({
     columnCount,
     rowCount,
@@ -55,7 +55,7 @@ const BlueprintAnimation = () => {
   );
 };
 
-export default BlueprintAnimation;
+export default GenerativeBlueprint;
 /**SIGN OFF NOTES:
  * Next to do is just polish.
  * - refactor styles into classes
