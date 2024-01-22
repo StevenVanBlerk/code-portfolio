@@ -1,4 +1,4 @@
-import GenerativeBlueprint from "@/bespokeSystem/components/BlueprintGridAnimation";
+import GenerativeBlueprint from "@/bespokeSystem/components/GenerativeBlueprint";
 import ContactMeOption1 from "./ContactMeOption1";
 import EducationOption1 from "./EducationOption1";
 import IntroductionOption1 from "./IntroductionOption1";
