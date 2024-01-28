@@ -43,11 +43,10 @@ const GenerativeBlueprint = () => {
 export default GenerativeBlueprint;
 /**SIGN OFF NOTES:
  * Next to do is just polish.
- * - refactor styles into classes
+ * - refactor styles into classes (use tailwind)
  * - replace all instances of "any" type
  * - add context state for drilled props
- * - fix performance bug where many nodes results in connection paths not lining up with center of node
- *      - a potential solution could be disabling illustrator until director has completed
+ *      - DONE -> TO-DO: change values and validate working correctly
  *
  * POSSIBLE ADDITION:
  * - create an opacity filter over the whole animation, then create a "no filter" effect around the mouse cursor. Animation will be grey far from cursor, and white at cursor
