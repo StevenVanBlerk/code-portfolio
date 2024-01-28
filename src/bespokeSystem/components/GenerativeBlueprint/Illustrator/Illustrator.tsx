@@ -2,56 +2,25 @@ import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
 import ConnectionPaths from "./ConnectionPaths";
 import SVGFrame from "../SVGFrame";
-import { AnimatePresence } from "framer-motion";
+import { GlobalValuesContext } from "../helpers/globalValues";
+import { useContext } from "react";
 
-const Illustrator = ({
-  isBackgroundGridDisplayed,
-  areNodesDisplayed,
-  areConnectionPathsDisplayed,
-  director,
-  gridGapSize,
-  radiusMultiplier,
-  connectionMinLength,
-  connectionMaxLength,
-  canvasWidth,
-  canvasHeight,
-  frameWidth,
-  canvasMargin,
-  stepDuration,
-}: any) => {
-  const { rowCount, columnCount, gridNodes, nodeConnections } = director;
+const Illustrator = ({ director }: any) => {
+  const globalValues = useContext(GlobalValuesContext);
+  const {
+    isBackgroundGridDisplayed,
+    areConnectionPathsDisplayed,
+    areNodesDisplayed,
+  } = globalValues;
+  const { gridNodes, nodeConnections } = director;
   return (
-    <SVGFrame
-      canvasWidth={canvasWidth}
-      canvasHeight={canvasHeight}
-      frameWidth={frameWidth}
-      canvasMargin={canvasMargin}
-    >
-      {isBackgroundGridDisplayed && (
-        <BackgroundGridLines
-          rowCount={rowCount}
-          columnCount={columnCount}
-          gridGapSize={gridGapSize}
-        />
-      )}
+    <SVGFrame>
+      {isBackgroundGridDisplayed && <BackgroundGridLines />}
       {/* rendering ConnectionPaths first to allow Nodes to visually exist above paths */}
       {areConnectionPathsDisplayed && (
-        <ConnectionPaths
-          nodeConnections={nodeConnections}
-          connectionMinLength={connectionMinLength}
-          connectionMaxLength={connectionMaxLength}
-          gridGapSize={gridGapSize}
-          stepDuration={stepDuration}
-        />
+        <ConnectionPaths nodeConnections={nodeConnections} />
       )}
-      {areNodesDisplayed && (
-        <Nodes
-          gridNodes={gridNodes}
-          gridGapSize={gridGapSize}
-          radiusMultiplier={radiusMultiplier}
-          stepDuration={stepDuration}
-        />
-      )}
+      {areNodesDisplayed && <Nodes gridNodes={gridNodes} />}
     </SVGFrame>
   );
 };

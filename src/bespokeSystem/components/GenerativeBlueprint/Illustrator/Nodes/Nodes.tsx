@@ -3,13 +3,12 @@ import {
   animateNodeGroup,
   animateNodeRadius,
 } from "../../helpers/motionVariants/motionVariants";
+import { useContext } from "react";
+import { GlobalValuesContext } from "../../helpers/globalValues";
 
-const Nodes = ({
-  gridNodes,
-  gridGapSize,
-  radiusMultiplier,
-  stepDuration,
-}: any) => {
+const Nodes = ({ gridNodes }: any) => {
+  const globalValues = useContext(GlobalValuesContext);
+  const { gridGapSize, stepDuration, radiusMultiplier } = globalValues;
   return Object.entries(gridNodes).map(([key, node]: any) => {
     return (
       <motion.g

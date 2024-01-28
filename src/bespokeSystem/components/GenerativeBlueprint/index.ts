@@ -1,2 +1,2 @@
-import GenerativeBlueprint from "./GenerativeBlueprint";
-export default GenerativeBlueprint;
+import Blueprint from "./GenerativeBlueprint";
+export default Blueprint;

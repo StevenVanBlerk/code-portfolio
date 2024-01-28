@@ -1,23 +1,8 @@
 import Path from "./Path";
 
-const ConnectionPaths = ({
-  nodeConnections,
-  connectionMinLength,
-  connectionMaxLength,
-  gridGapSize,
-  stepDuration,
-}: any) => {
+const ConnectionPaths = ({ nodeConnections }: any) => {
   return Object.entries(nodeConnections).map(([key, line]: any) => {
-    return (
-      <Path
-        key={key}
-        line={line}
-        connectionMinLength={connectionMinLength}
-        connectionMaxLength={connectionMaxLength}
-        gridGapSize={gridGapSize}
-        stepDuration={stepDuration}
-      />
-    );
+    return <Path key={key} line={line} />;
   });
 };
 

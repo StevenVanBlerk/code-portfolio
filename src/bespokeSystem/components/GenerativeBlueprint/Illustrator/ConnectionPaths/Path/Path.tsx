@@ -3,14 +3,18 @@ import { animateNodeConnection } from "../../../helpers/motionVariants/motionVar
 import { useState } from "react";
 import { calculatePathLength } from "@/bespokeSystem/helpers/pathHelpers";
 import { normaliseOpacity } from "./helpers";
+import { GlobalValuesContext } from "../../../helpers/globalValues";
+import { useContext } from "react";
 
-const Path = ({
-  line,
-  connectionMinLength,
-  connectionMaxLength,
-  gridGapSize,
-  stepDuration,
-}: any) => {
+const Path = ({ line }: any) => {
+  const globalValues = useContext(GlobalValuesContext);
+  const {
+    gridGapSize,
+    connectionMinLength,
+    connectionMaxLength,
+    stepDuration,
+  } = globalValues;
+
   const [x1, setX1] = useState(line.sequenceA[0].x * gridGapSize);
   const [y1, setY1] = useState(line.sequenceA[0].y * gridGapSize);
   const [x2, setX2] = useState(line.sequenceB[0].x * gridGapSize);
