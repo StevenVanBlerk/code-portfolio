@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { GlobalValuesContext } from "../helpers/globalValues/globalValues";
+import { SVGFrameProps } from "./_types";
 
-const SVGFrame = ({ children }) => {
+const SVGFrame = ({ children }: SVGFrameProps) => {
   const globalValues = useContext(GlobalValuesContext);
   const { canvasHeight, canvasWidth, canvasMargin, frameWidth } = globalValues;
 

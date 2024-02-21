@@ -5,8 +5,9 @@ import {
 } from "../../helpers/motionVariants/motionVariants";
 import { useContext } from "react";
 import { GlobalValuesContext } from "../../helpers/globalValues/globalValues";
+import { NodesProps } from "./_types";
 
-const Nodes = ({ gridNodes }) => {
+const Nodes = ({ gridNodes }: NodesProps) => {
   const globalValues = useContext(GlobalValuesContext);
   const { gridGapSize, stepDuration, radiusMultiplier } = globalValues;
   return Object.entries(gridNodes).map(([key, node]) => {

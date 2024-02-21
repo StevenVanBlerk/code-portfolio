@@ -9,13 +9,8 @@ import {
 import useDirector from "./hooks/usePositionDirector/useDirector";
 import { ContextData } from "./helpers/globalValues/_types";
 
-const ContextWrapper = ({ children }) => {
-  return <GlobalValuesContextProvider>{children}</GlobalValuesContextProvider>;
-};
-
 const Blueprint = () => {
   const globalValues = useContext(GlobalValuesContext);
-  console.log("globalValuesContext", globalValues);
   const { columnCount, rowCount, nodeCount, stepCount, nodeMaxDisplacement } =
     globalValues as ContextData;
 
@@ -36,19 +31,20 @@ const Blueprint = () => {
 
 const GenerativeBlueprint = () => {
   return (
-    <ContextWrapper>
+    <GlobalValuesContextProvider>
       <Blueprint />
-    </ContextWrapper>
+    </GlobalValuesContextProvider>
   );
 };
+
 export default GenerativeBlueprint;
 /**SIGN OFF NOTES:
  * Next to do is just polish.
  * - refactor styles into classes (use tailwind)
- * - replace all instances of "" type
- * - add context state for drilled props
- *      - DONE -> TO-DO: change values and validate working correctly
  * - improve performance by debouncing/memoizing things
+ * - define return types
+ * - populate ./README.md
+ * - Add TSDoc to important types
  *
  * POSSIBLE ADDITION:
  * - create an opacity filter over the whole animation, then create a "no filter" effect around the mouse cursor. Animation will be grey far from cursor, and white at cursor

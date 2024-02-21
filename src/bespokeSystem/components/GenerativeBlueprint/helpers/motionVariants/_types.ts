@@ -1,6 +1,8 @@
+import { GridNodeSequence } from "../../_types";
+
 type NodeGroupSequenceStep = { x: number; y: number; initialDelay: number };
 
-export type animateNodeGroupProps = {
+export type animateNodeGroupParams = {
   sequence: NodeGroupSequenceStep[];
   gridGapSize: number;
   stepDuration: number;
@@ -9,20 +11,15 @@ export type animateNodeGroupProps = {
 type NodeRadiusSequenceStep = {
   r: number;
 };
-export type animateNodeRadiusProps = {
+export type animateNodeRadiusParams = {
   sequence: NodeRadiusSequenceStep[];
   radiusMultiplier: number;
   stepDuration: number;
 };
 
-type NodeConnectionSequenceStep = {
-  x: number;
-  y: number;
-  initialDelay: number;
-};
-export type animateNodeConnectionProps = {
-  sequenceA: NodeConnectionSequenceStep[];
-  sequenceB: NodeConnectionSequenceStep[];
+export type animateNodeConnectionParams = {
+  sequenceA: GridNodeSequence;
+  sequenceB: GridNodeSequence;
   gridGapSize: number;
   stepDuration: number;
   opacity: number;

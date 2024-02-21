@@ -5,9 +5,9 @@
  */
 
 import {
-  animateNodeConnectionProps,
-  animateNodeGroupProps,
-  animateNodeRadiusProps,
+  animateNodeConnectionParams,
+  animateNodeGroupParams,
+  animateNodeRadiusParams,
 } from "./_types";
 
 // TO-DO: experiment with a more elastic transition
@@ -19,7 +19,11 @@ const getCommonTransition = (sequenceDuration: number) => ({
 });
 
 export const animateNodeGroup = {
-  animate: ({ sequence, gridGapSize, stepDuration }: animateNodeGroupProps) => {
+  animate: ({
+    sequence,
+    gridGapSize,
+    stepDuration,
+  }: animateNodeGroupParams) => {
     const initialDelay = sequence[0].initialDelay;
     const cxSequence = sequence.map((step) => step.x * gridGapSize);
     const cySequence = sequence.map((step) => step.y * gridGapSize);
@@ -45,7 +49,7 @@ export const animateNodeRadius = {
     sequence,
     radiusMultiplier,
     stepDuration,
-  }: animateNodeRadiusProps) => {
+  }: animateNodeRadiusParams) => {
     const initialDelay = 0;
 
     const rSequence = sequence.map((step) => {
@@ -76,7 +80,7 @@ export const animateNodeConnection = {
     sequenceA,
     gridGapSize,
     stepDuration,
-  }: animateNodeConnectionProps) => {
+  }: animateNodeConnectionParams) => {
     const x1Sequence = sequenceA.map((step) => step.x * gridGapSize); //TO-DO ADD DELAY TO ANIMATEA and ANIMATEB
     const y1Sequence = sequenceA.map((step) => step.y * gridGapSize);
     const initialDelay = sequenceA[0].initialDelay;
@@ -96,7 +100,7 @@ export const animateNodeConnection = {
     sequenceB,
     gridGapSize,
     stepDuration,
-  }: animateNodeConnectionProps) => {
+  }: animateNodeConnectionParams) => {
     const x2Sequence = sequenceB.map((step) => step.x * gridGapSize);
     const y2Sequence = sequenceB.map((step) => step.y * gridGapSize);
     const initialDelay = sequenceB[0].initialDelay;
@@ -112,7 +116,7 @@ export const animateNodeConnection = {
       },
     };
   },
-  animateOpacity: ({ opacity }: animateNodeConnectionProps) => {
+  animateOpacity: ({ opacity }: animateNodeConnectionParams) => {
     return {
       opacity,
     };

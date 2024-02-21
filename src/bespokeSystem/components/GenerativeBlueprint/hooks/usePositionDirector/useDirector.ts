@@ -1,3 +1,5 @@
+import { Director } from "../../_types";
+import { UseDirectorParams } from "./_types";
 import {
   initialiseGrid2D,
   initialiseGridNodes,
@@ -10,7 +12,7 @@ const useDirector = ({
   nodeCount,
   stepCount,
   nodeMaxDisplacement,
-}) => {
+}: UseDirectorParams) => {
   const grid2D = initialiseGrid2D(columnCount, columnCount);
   const gridNodes = initialiseGridNodes({
     nodeCount,
@@ -21,7 +23,7 @@ const useDirector = ({
   });
   const nodeConnections = initialiseNodeConnections({ gridNodes });
 
-  const director = {
+  const director: Director = {
     grid2D,
     gridNodes,
     nodeConnections,

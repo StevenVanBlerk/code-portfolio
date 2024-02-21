@@ -1,10 +1,9 @@
-import { motion } from "framer-motion";
+import { useContext } from "react";
+import { GlobalValuesContext } from "../../helpers/globalValues/globalValues";
 
-const BackgroundGridLines = ({
-  rowCount,
-  columnCount,
-  gridGapSize,
-}) => {
+const BackgroundGridLines = () => {
+  const globalValues = useContext(GlobalValuesContext);
+  const { rowCount, columnCount, gridGapSize } = globalValues;
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {

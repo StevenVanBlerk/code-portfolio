@@ -3,13 +3,17 @@ import {
   randomArrayStep,
   randomInteger,
 } from "@/designSystem/utilities/randomGenerators";
+import {
+  InitialiseGridNodesParams,
+  InitialiseNodeConnectionsParams,
+} from "./_types";
+import { Grid2D, GridNode, NodeConnections } from "../../_types";
 
 export const initialiseGrid2D = (
   rowCount: number,
   columnCount: number
-) => {
-  //TO-DO: use this same logic in svg renderer
-  const grid = {};
+): Grid2D => {
+  const grid: Grid2D = {};
   for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
     for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       const key = `${rowIndex}-${columnIndex}`;
@@ -25,11 +29,11 @@ export const initialiseGridNodes = ({
   nodeCount,
   stepCount,
   nodeMaxDisplacement,
-}) => {
-  const nodes = [];
+}: InitialiseGridNodesParams): GridNode[] => {
+  const nodes: GridNode[] = [];
 
   const allowedRadiusValues = [1, 2, 3, 4];
-  for (let nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
+  for (let nodeIndex: number = 0; nodeIndex < nodeCount; nodeIndex++) {
     const initialRadius = randomArrayEntry(allowedRadiusValues);
 
     const initialX = randomInteger({ min: 0, max: columnCount - 1 });
@@ -79,21 +83,23 @@ export const initialiseGridNodes = ({
       });
       previousStep = sequence[sequence.length - 1];
     }
-    const nodeId = `node-${nodeIndex}`;
+    const nodeId: string = `node-${nodeIndex}`;
     const node = {
       id: nodeId,
       sequence,
     };
 
-    nodes[nodeId] = node;
+    nodes[nodeIndex] = node;
   }
   return nodes;
 };
 
-export const initialiseNodeConnections = ({ gridNodes }) => {
+export const initialiseNodeConnections = ({
+  gridNodes,
+}: InitialiseNodeConnectionsParams): NodeConnections => {
   const gridNodesArr = Object.values(gridNodes);
 
-  const connections = {};
+  const connections: NodeConnections = {};
   for (let nodeIndex = 0; nodeIndex < gridNodesArr.length; nodeIndex++) {
     const nodeA = gridNodesArr[nodeIndex];
     for (
@@ -107,7 +113,11 @@ export const initialiseNodeConnections = ({ gridNodes }) => {
       const sequenceA = nodeA.sequence;
       const sequenceB = nodeB.sequence;
 
-      connections[connectionId] = { id: connectionId, sequenceA, sequenceB };
+      connections[connectionId] = {
+        id: connectionId,
+        sequenceA,
+        sequenceB,
+      };
     }
   }
   return connections;

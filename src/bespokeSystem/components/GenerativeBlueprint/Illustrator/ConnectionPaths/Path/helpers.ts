@@ -1,3 +1,5 @@
+import { LineCoordinates, NormalisedOpacityParams } from "./_types";
+
 /**
  * Calculates the opacity based on the current path length, minimum path length, and maximum path length.
  * @param {number} pathLength - The current path length.
@@ -9,11 +11,7 @@ export const normaliseOpacity = ({
   connectionLength,
   connectionMinLength,
   connectionMaxLength,
-}: {
-  connectionLength: number;
-  connectionMinLength: number;
-  connectionMaxLength: number;
-}) => {
+}: NormalisedOpacityParams) => {
   // Ensure that currentLength is within the specified range
   const currentLength = Math.max(
     connectionMinLength,
@@ -30,4 +28,13 @@ export const normaliseOpacity = ({
   const opacity = Math.max(0, Math.min(normalisedOpacity, 1));
 
   return opacity;
+};
+
+export const calculatePathLength = ({ x1, y1, x2, y2 }: LineCoordinates) => {
+  const deltaX = x2 - x1;
+  const deltaY = y2 - y1;
+  const deltaXSquare = Math.pow(deltaX, 2);
+  const deltaYSquare = Math.pow(deltaY, 2);
+  const distance = Math.sqrt(deltaXSquare + deltaYSquare);
+  return distance;
 };

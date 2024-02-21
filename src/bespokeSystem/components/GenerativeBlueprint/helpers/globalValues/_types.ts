@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type ContextData = {
   isBackgroundGridDisplayed: boolean;
   areNodesDisplayed: boolean;
@@ -17,4 +19,8 @@ export type ContextData = {
   radiusMultiplier: number;
   connectionMinLength: number;
   connectionMaxLength: number;
+};
+
+export type GlobalValuesContextProviderProps = {
+  children: ReactNode;
 };

@@ -1,12 +1,11 @@
+import { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { animateNodeConnection } from "../../../helpers/motionVariants/motionVariants";
-import { useState } from "react";
-import { calculatePathLength } from "@/bespokeSystem/helpers/pathHelpers";
-import { normaliseOpacity } from "./helpers";
+import { calculatePathLength, normaliseOpacity } from "./helpers";
 import { GlobalValuesContext } from "../../../helpers/globalValues/globalValues";
-import { useContext } from "react";
+import { LineCoordinates, PathProps } from "./_types";
 
-const Path = ({ line }) => {
+const Path = ({ line }: PathProps) => {
   const globalValues = useContext(GlobalValuesContext);
   const {
     gridGapSize,
@@ -26,12 +25,13 @@ const Path = ({ line }) => {
     connectionMaxLength,
   });
 
-  const handleUpdate = ({ x1, y1, x2, y2 }) => {
+  const handleUpdate = ({ x1, y1, x2, y2 }: LineCoordinates) => {
     setX1(x1);
     setY1(y1);
     setX2(x2);
     setY2(y2);
   };
+
   return (
     <motion.line
       stroke="#fff"
