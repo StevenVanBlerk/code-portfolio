@@ -7,9 +7,9 @@ import {
 export const initialiseGrid2D = (
   rowCount: number,
   columnCount: number
-): any => {
+) => {
   //TO-DO: use this same logic in svg renderer
-  const grid: any = {};
+  const grid = {};
   for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
     for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       const key = `${rowIndex}-${columnIndex}`;
@@ -25,8 +25,8 @@ export const initialiseGridNodes = ({
   nodeCount,
   stepCount,
   nodeMaxDisplacement,
-}: any): any => {
-  const nodes: any = [];
+}) => {
+  const nodes = [];
 
   const allowedRadiusValues = [1, 2, 3, 4];
   for (let nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
@@ -90,10 +90,10 @@ export const initialiseGridNodes = ({
   return nodes;
 };
 
-export const initialiseNodeConnections = ({ gridNodes }: any) => {
-  const gridNodesArr: any = Object.values(gridNodes);
+export const initialiseNodeConnections = ({ gridNodes }) => {
+  const gridNodesArr = Object.values(gridNodes);
 
-  const connections: any = {};
+  const connections = {};
   for (let nodeIndex = 0; nodeIndex < gridNodesArr.length; nodeIndex++) {
     const nodeA = gridNodesArr[nodeIndex];
     for (

@@ -4,7 +4,7 @@ const BackgroundGridLines = ({
   rowCount,
   columnCount,
   gridGapSize,
-}: any): any => {
+}) => {
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {

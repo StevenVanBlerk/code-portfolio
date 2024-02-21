@@ -2,10 +2,10 @@ import BackgroundGridLines from "./BackgroundGridLines";
 import Nodes from "./Nodes";
 import ConnectionPaths from "./ConnectionPaths";
 import SVGFrame from "../SVGFrame";
-import { GlobalValuesContext } from "../helpers/globalValues";
+import { GlobalValuesContext } from "../helpers/globalValues/globalValues";
 import { useContext } from "react";
 
-const Illustrator = ({ director }: any) => {
+const Illustrator = ({ director }) => {
   const globalValues = useContext(GlobalValuesContext);
   const {
     isBackgroundGridDisplayed,

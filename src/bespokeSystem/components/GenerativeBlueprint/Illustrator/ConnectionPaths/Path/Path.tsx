@@ -3,10 +3,10 @@ import { animateNodeConnection } from "../../../helpers/motionVariants/motionVar
 import { useState } from "react";
 import { calculatePathLength } from "@/bespokeSystem/helpers/pathHelpers";
 import { normaliseOpacity } from "./helpers";
-import { GlobalValuesContext } from "../../../helpers/globalValues";
+import { GlobalValuesContext } from "../../../helpers/globalValues/globalValues";
 import { useContext } from "react";
 
-const Path = ({ line }: any) => {
+const Path = ({ line }) => {
   const globalValues = useContext(GlobalValuesContext);
   const {
     gridGapSize,
@@ -26,7 +26,7 @@ const Path = ({ line }: any) => {
     connectionMaxLength,
   });
 
-  const handleUpdate = ({ x1, y1, x2, y2 }: any) => {
+  const handleUpdate = ({ x1, y1, x2, y2 }) => {
     setX1(x1);
     setY1(y1);
     setX2(x2);

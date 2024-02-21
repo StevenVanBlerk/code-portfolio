@@ -10,7 +10,7 @@ const useDirector = ({
   nodeCount,
   stepCount,
   nodeMaxDisplacement,
-}: any): any => {
+}) => {
   const grid2D = initialiseGrid2D(columnCount, columnCount);
   const gridNodes = initialiseGridNodes({
     nodeCount,
