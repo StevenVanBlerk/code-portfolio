@@ -1,31 +1,56 @@
-import React, { ReactNode, createContext } from "react";
-import { ContextData, GlobalValuesContextProviderProps } from "./_types";
+import React, { createContext } from "react";
+import {
+  ContextData,
+  GlobalValuesContextProviderProps,
+  CustomisableValues,
+} from "./_types";
 
-const rowCount = 10; //px
-const columnCount = 19; //px
-const gridGapSize = 60; //px
+const rowCount = 10;
+const columnCount = 20;
+const gridGapSize = 60;
+// settings for debugging nodes/lines delay bugs
+// const rowCount = 5; //10;
+// const columnCount = 10; //20;
+// const gridGapSize = 120; //60;
 
-// TO-DO: Add controls for these values and presets to quickly switch
-
-const initialValues: ContextData = {
+const allElementsDisplayedPreset: CustomisableValues = {
   isBackgroundGridDisplayed: true,
   areNodesDisplayed: true,
   areConnectionPathsDisplayed: true,
+  AreNodesSynchronised: false,
+  stepCount: 10,
+  stepDuration: 3,
+  nodeCount: 20,
+  nodeMaxDisplacement: 3,
+  radiusMultiplier: 3,
+  connectionMinLength: 0.5 * gridGapSize,
+  connectionMaxLength: 2.5 * gridGapSize,
+};
+
+const noNodesDisplayedPreset: CustomisableValues = {
+  isBackgroundGridDisplayed: true,
+  areNodesDisplayed: false,
+  areConnectionPathsDisplayed: true,
+  AreNodesSynchronised: false,
+  stepCount: 10,
+  stepDuration: 3,
+  nodeCount: 30,
+  nodeMaxDisplacement: 3,
+  radiusMultiplier: 3,
+  connectionMinLength: 0 * gridGapSize,
+  connectionMaxLength: 3.5 * gridGapSize,
+};
+
+const initialValues: ContextData = {
   canvasHeight: rowCount * gridGapSize,
   canvasWidth: columnCount * gridGapSize,
-  canvasMargin: 25, //px
-  frameWidth: 0, //px
-  stepDuration: 3,
-  stepCount: 10,
+  canvasMargin: 25,
+  frameWidth: 0,
   columnCount,
   rowCount,
   gridGapSize,
-  AreNodesSynchronised: false, // TO-DO: set initialDelay to 0 when true
-  nodeMaxDisplacement: 3, //gaps
-  nodeCount: 30,
-  radiusMultiplier: 3, //TO-DO: rename to nodeRadiusMultiplier
-  connectionMinLength: 0.5 * gridGapSize,
-  connectionMaxLength: 3.5 * gridGapSize,
+  // ...noNodesDisplayedPreset,
+  ...allElementsDisplayedPreset,
 };
 
 export const GlobalValuesContext = createContext<ContextData>(initialValues);

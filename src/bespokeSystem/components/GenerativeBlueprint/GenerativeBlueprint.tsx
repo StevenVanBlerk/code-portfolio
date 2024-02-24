@@ -7,12 +7,11 @@ import {
   GlobalValuesContextProvider,
 } from "./helpers/globalValues/globalValues";
 import useDirector from "./hooks/usePositionDirector/useDirector";
-import { ContextData } from "./helpers/globalValues/_types";
 
 const Blueprint = () => {
   const globalValues = useContext(GlobalValuesContext);
   const { columnCount, rowCount, nodeCount, stepCount, nodeMaxDisplacement } =
-    globalValues as ContextData;
+    globalValues;
 
   const director = useDirector({
     columnCount: columnCount,
@@ -22,11 +21,7 @@ const Blueprint = () => {
     nodeMaxDisplacement: nodeMaxDisplacement,
   });
 
-  return (
-    <div style={{ opacity: 0.7 }}>
-      <Illustrator director={director} />
-    </div>
-  );
+  return <Illustrator director={director} />;
 };
 
 const GenerativeBlueprint = () => {
@@ -45,11 +40,18 @@ export default GenerativeBlueprint;
  * - define return types
  * - populate ./README.md
  * - Add TSDoc to important types
+ * - find alternative whites instead of using opacity: 0.7
+ * - set initialDelay to true when AreNodesSynchronised=true
+ * - rename context radiusMultiplier to nodeRadiusMultiplier
+ * - there is a connection path bug. Opacity seems to sometimes suddenly shift causing lines to rapidly appear/disappear.
+ *    - Maybe switching to a transition of colour (white to black) instead of opacity will fix this. Low opacity values can be inconsistent.
+ *    - Might be more severe when nodes are displayed, suggesting it could be a performance limitation.
+ *    - Rendering a small node count (where performance is good) has this bug severely. This is a weird bug. Maybe a delay issue
+ * POSSIBLE ADDITIONS:
+ * - create a light mode dark mode switch. Nodes and background swap colors on click
  *
- * POSSIBLE ADDITION:
- * - create an opacity filter over the whole animation, then create a "no filter" effect around the mouse cursor. Animation will be grey far from cursor, and white at cursor
  *
  * BACKGROUND THOUGHT:
- * - If the animation is always made to spill over 1 grid gap, resizing the viewport will not be as noticable
+ * - If the animation is always made to spill over 1 grid gap, resizing the viewport will not be as noticeable
  * - The animation still looks great when displaying connection lines but not nodes. Set maxPathLength to a high value (3~4)
  */
