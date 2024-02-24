@@ -25,8 +25,6 @@ export type ContextData = CustomisableValues & {
   /** measured in px */
   canvasWidth: number;
   /** measured in px */
-  frameWidth: number;
-  /** measured in px */
   canvasMargin: number;
 };
 

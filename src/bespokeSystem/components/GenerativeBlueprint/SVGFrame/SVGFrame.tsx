@@ -5,14 +5,13 @@ import { SVGFrameProps } from "./_types";
 
 const SVGFrame = ({ children }: SVGFrameProps) => {
   const globalValues = useContext(GlobalValuesContext);
-  const { canvasHeight, canvasWidth, canvasMargin, frameWidth } = globalValues;
+  const { canvasHeight, canvasWidth, canvasMargin } = globalValues;
 
   return (
     <div
       style={{
-        height: canvasHeight + frameWidth + frameWidth,
-        width: canvasWidth + frameWidth + frameWidth,
-        padding: `${frameWidth}px`,
+        height: canvasHeight,
+        width: canvasWidth,
       }}
     >
       <motion.svg

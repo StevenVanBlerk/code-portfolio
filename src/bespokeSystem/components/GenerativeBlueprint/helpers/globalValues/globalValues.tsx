@@ -45,7 +45,6 @@ const initialValues: ContextData = {
   canvasHeight: rowCount * gridGapSize,
   canvasWidth: columnCount * gridGapSize,
   canvasMargin: 25,
-  frameWidth: 0,
   columnCount,
   rowCount,
   gridGapSize,
