@@ -3,8 +3,6 @@ type GridCell = {
   columnIndex: number;
 };
 
-export type Grid2D = { [key: string]: GridCell };
-
 export type GridNodeStep = {
   x: number;
   y: number;
@@ -36,7 +34,6 @@ export type GridNode = {
 };
 
 export type Director = {
-  grid2D: Grid2D;
   gridNodes: GridNode[];
   nodeConnections: NodeConnections;
   rowCount: number;

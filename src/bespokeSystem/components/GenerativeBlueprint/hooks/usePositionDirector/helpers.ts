@@ -7,21 +7,7 @@ import {
   InitialiseGridNodesParams,
   InitialiseNodeConnectionsParams,
 } from "./_types";
-import { Grid2D, GridNode, NodeConnections } from "../../_types";
-
-export const initialiseGrid2D = (
-  rowCount: number,
-  columnCount: number
-): Grid2D => {
-  const grid: Grid2D = {};
-  for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-    for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-      const key = `${rowIndex}-${columnIndex}`;
-      grid[key] = { rowIndex, columnIndex };
-    }
-  }
-  return grid;
-};
+import { GridNode, NodeConnections } from "../../_types";
 
 export const initialiseGridNodes = ({
   rowCount,
@@ -57,12 +43,14 @@ export const initialiseGridNodes = ({
 
       const xDiff = displacementAxis === "x" ? randomDistance : 0;
       const yDiff = displacementAxis === "y" ? randomDistance : 0;
+
       const newX =
         previousStep.x + xDiff < 0
           ? 0
           : previousStep.x + xDiff > columnCount - 1
           ? columnCount - 1
           : previousStep.x + xDiff;
+
       const newY =
         previousStep.y + yDiff < 0
           ? 0
@@ -91,6 +79,7 @@ export const initialiseGridNodes = ({
 
     nodes[nodeIndex] = node;
   }
+
   return nodes;
 };
 
