@@ -54,19 +54,19 @@ const noNodesDisplayedPreset: ContextData = {
   isPlaying: true,
 };
 
-const rowCountSidebar = 7;
 const columnCountSidebar = 5;
+const rowCountSidebar = 7;
 const gridGapSizeSideBar = 130;
 
 const sideBarPreset: ContextData = {
-  canvasHeight: rowCountSidebar * gridGapSizeSideBar,
-  canvasWidth: columnCountSidebar * gridGapSizeSideBar,
-  canvasMargin: 25,
+  canvasWidth: (columnCountSidebar - 1) * gridGapSizeSideBar, // column 0 is n-1 columns away from column n
+  canvasHeight: (rowCountSidebar - 1) * gridGapSizeSideBar,
+  canvasMargin: 30,
   rowCount: rowCountSidebar,
   columnCount: columnCountSidebar,
   gridGapSize: gridGapSizeSideBar,
-  isBackgroundGridDisplayed: false,
-  areNodesDisplayed: false,
+  isBackgroundGridDisplayed: true,
+  areNodesDisplayed: true,
   areConnectionPathsDisplayed: true,
   AreNodesSynchronised: false,
   stepCount: 20,
@@ -76,7 +76,7 @@ const sideBarPreset: ContextData = {
   nodeRadiusMultiplier: 3, //2,
   connectionMinLength: 0 * gridGapSize,
   connectionMaxLength: 3.5 * gridGapSize,
-  BackgroundGridColour: "red",
+  BackgroundGridColour: "blue",
   isPlaying: false,
 };
 

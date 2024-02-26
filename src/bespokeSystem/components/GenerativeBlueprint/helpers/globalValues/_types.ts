@@ -9,7 +9,7 @@ export type ContextData = {
   canvasHeight: number;
   /** measured in px */
   canvasWidth: number;
-  /** measured in px */
+  /** Extra space added around canvas in case nodes spill outside of canvas. Measured in px */
   canvasMargin: number;
   isBackgroundGridDisplayed: boolean;
   areNodesDisplayed: boolean;

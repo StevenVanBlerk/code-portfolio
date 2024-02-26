@@ -7,21 +7,21 @@ const SVGFrame = ({ children }: SVGFrameProps) => {
   const globalValues = useContext(GlobalValuesContext);
   const { canvasHeight, canvasWidth, canvasMargin } = globalValues;
 
+  const frameHeight = canvasHeight + canvasMargin * 2;
+  const frameWidth = canvasWidth + canvasMargin * 2;
   return (
-    <div
-      style={{
-        height: canvasHeight,
-        width: canvasWidth,
-      }}
-    >
+    <div>
       <motion.svg
-        width={canvasWidth}
-        height={canvasHeight}
-        viewBox={`-${canvasMargin} -${canvasMargin} ${canvasWidth} ${canvasHeight}`} // ensuring edges of nodes fit inside canvas
+        width={frameWidth}
+        height={frameHeight}
+        viewBox={`0 0 ${frameWidth} ${frameHeight}`}
         initial="initial"
         animate="animate"
       >
-        {children}
+        {/* centering <g/> within <svg/ */}
+        <g transform={`translate(${canvasMargin}, ${canvasMargin})`}>
+          {children}
+        </g>
       </motion.svg>
     </div>
   );
