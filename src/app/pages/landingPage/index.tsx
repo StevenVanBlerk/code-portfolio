@@ -4,6 +4,7 @@ import EducationOption1 from "./EducationOption1";
 import IntroductionOption1 from "./IntroductionOption1";
 import SkillsOption1 from "./SkillsOption1";
 import WorkExperienceOption1 from "./WorkExperienceOption1";
+import BackgroundAnimation from "./BackgroundAnimation";
 
 const Button = ({ children }) => {
   return (
@@ -12,35 +13,15 @@ const Button = ({ children }) => {
     </button>
   );
 };
+
 const LandingPage = () => {
   return (
     <div className="grid gap-10">
-      <span
-        style={{
-          position: "absolute",
-          left: "0",
-          // opacity: "0.7",
-        }}
-      >
-        <GenerativeBlueprint />
-      </span>
-
-      <span
-        style={{
-          position: "absolute",
-          right: "0",
-          // opacity: "0.7",
-        }}
-      >
-        <GenerativeBlueprint />
-      </span>
-
+      <BackgroundAnimation />
       <div
         style={{
-          // maxWidth: "600px",
           margin: "auto",
-          marginTop: "32px",
-          color: "white",
+
           display: "flex",
           flexDirection: "column",
           height: "calc(100vh - 50px)",

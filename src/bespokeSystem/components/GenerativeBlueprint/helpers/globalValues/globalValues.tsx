@@ -67,7 +67,7 @@ const sideBarPreset: ContextData = {
   gridGapSize: gridGapSizeSideBar,
   isBackgroundGridDisplayed: false,
   areNodesDisplayed: true,
-  areConnectionPathsDisplayed: true,
+  areConnectionPathsDisplayed: false,
   AreNodesSynchronised: false,
   stepCount: 12,
   stepDuration: 3,
