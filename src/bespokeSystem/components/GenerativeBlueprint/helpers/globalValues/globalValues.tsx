@@ -56,22 +56,22 @@ const noNodesDisplayedPreset: ContextData = {
 
 const columnCountSidebar = 5;
 const rowCountSidebar = 7;
-const gridGapSizeSideBar = 130;
+const gridGapSizeSideBar = 120;
 
 const sideBarPreset: ContextData = {
   canvasWidth: (columnCountSidebar - 1) * gridGapSizeSideBar, // column 0 is n-1 columns away from column n
   canvasHeight: (rowCountSidebar - 1) * gridGapSizeSideBar,
-  canvasMargin: 30,
+  canvasMargin: 13,
   rowCount: rowCountSidebar,
   columnCount: columnCountSidebar,
   gridGapSize: gridGapSizeSideBar,
-  isBackgroundGridDisplayed: true,
+  isBackgroundGridDisplayed: false,
   areNodesDisplayed: true,
   areConnectionPathsDisplayed: true,
   AreNodesSynchronised: false,
-  stepCount: 20,
+  stepCount: 12,
   stepDuration: 3,
-  nodeCount: 20,
+  nodeCount: 14,
   nodeMaxDisplacement: 3,
   nodeRadiusMultiplier: 3, //2,
   connectionMinLength: 0 * gridGapSize,
