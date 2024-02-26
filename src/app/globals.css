@@ -17,4 +17,10 @@
 }
 
 body {
+  font-family: Courier, monospace;
+}
+
+@font-face {
+  font-family: "Minimalist";
+  src: url("/fonts/Minimalist/Minimalist.otf");
 }

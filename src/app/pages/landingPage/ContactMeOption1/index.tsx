@@ -1,16 +1,10 @@
-interface CardProps {
-  children: any;
-}
-const Card = ({ children }: CardProps) => (
-  <div className="bg-white text-center place-self-center text-black">
-    {children}
-  </div>
-);
+import { Card } from "@/designSystem";
+
 const ContactMeOption1 = () => {
   return (
     <div>
-      <h1>Get In Touch</h1>
       <Card>
+        <h1>Get In Touch</h1>
         <div>www.linkedin.com/in/steven-van-blerk</div>
         <div>stevenvanblerkrsa@gmail.com</div>
         <div>Mobile: +27 76 885 4323 </div>

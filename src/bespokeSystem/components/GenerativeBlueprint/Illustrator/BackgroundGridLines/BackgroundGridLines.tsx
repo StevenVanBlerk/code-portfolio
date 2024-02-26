@@ -3,7 +3,8 @@ import { GlobalValuesContext } from "../../helpers/globalValues/globalValues";
 
 const BackgroundGridLines = () => {
   const globalValues = useContext(GlobalValuesContext);
-  const { rowCount, columnCount, gridGapSize } = globalValues;
+  const { rowCount, columnCount, gridGapSize, BackgroundGridColour } =
+    globalValues;
   const lines = [];
   for (let i = 0; i < rowCount; i++) {
     const horizontalLine = {
@@ -34,7 +35,7 @@ const BackgroundGridLines = () => {
         y1={line.y1}
         x2={line.x2}
         y2={line.y2}
-        stroke="#333"
+        stroke={BackgroundGridColour}
       />
     );
   });

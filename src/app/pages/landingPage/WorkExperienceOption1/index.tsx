@@ -1,17 +1,10 @@
-interface CardProps {
-  children: any;
-}
-const Card = ({ children }: CardProps) => (
-  <div className="bg-white text-center place-self-center text-black">
-    {children}
-  </div>
-);
+import { Card } from "@/designSystem";
 
 const WorkExperienceOption1 = () => {
   return (
     <div className="grid gap-5">
-      <h1>WORK EXPERIENCE</h1>
       <Card>
+        <h1>WORK EXPERIENCE</h1>
         <h2>OfferZen Sep 2021 - Present </h2>
         <p>
           My work involves maintaining a recruitment marketplace. The product

@@ -12,6 +12,7 @@ const Path = ({ line }: PathProps) => {
     connectionMinLength,
     connectionMaxLength,
     stepDuration,
+    isPlaying,
   } = globalValues;
 
   const [x1, setX1] = useState(line.sequenceA[0].x * gridGapSize);

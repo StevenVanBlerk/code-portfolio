@@ -1,11 +1,4 @@
-interface CardProps {
-  children: any;
-}
-const Card = ({ children }: CardProps) => (
-  <div className="bg-white text-center place-self-center text-black">
-    {children}
-  </div>
-);
+import { Card } from "@/designSystem";
 
 const IntroductionOption1 = () => {
   return (

@@ -40,9 +40,8 @@ export default GenerativeBlueprint;
  * - define return types
  * - populate ./README.md
  * - Add TSDoc to important types
- * - find alternative whites instead of using opacity: 0.7
+ * - transition colour instead of using opacity: 0.7?
  * - set initialDelay to true when AreNodesSynchronised=true
- * - rename context radiusMultiplier to nodeRadiusMultiplier
  * - there is a connection path bug. Opacity seems to sometimes suddenly shift causing lines to rapidly appear/disappear.
  *    - Maybe switching to a transition of colour (white to black) instead of opacity will fix this. Low opacity values can be inconsistent.
  *    - Might be more severe when nodes are displayed, suggesting it could be a performance limitation.

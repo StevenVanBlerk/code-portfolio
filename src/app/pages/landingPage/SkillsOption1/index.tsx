@@ -1,17 +1,10 @@
-interface CardProps {
-  children: any;
-}
-const Card = ({ children }: CardProps) => (
-  <div className="bg-white text-center place-self-center text-black">
-    {children}
-  </div>
-);
+import { Card } from "@/designSystem";
 
 const SkillsOption1 = () => {
   return (
     <div className="text-center grid gap-5">
-      <h1>SKILLS</h1>
       <Card>
+        <h1>SKILLS</h1>
         <h2>Core frameworks</h2>
         <span>React | </span>
         <span>NextJS | </span>

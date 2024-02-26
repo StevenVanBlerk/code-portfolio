@@ -13,7 +13,7 @@ type NodeRadiusSequenceStep = {
 };
 export type animateNodeRadiusParams = {
   sequence: NodeRadiusSequenceStep[];
-  radiusMultiplier: number;
+  nodeRadiusMultiplier: number;
   stepDuration: number;
 };
 

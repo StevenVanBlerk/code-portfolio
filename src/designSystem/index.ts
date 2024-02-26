@@ -1,4 +1,5 @@
 //components
-import Button from './components/inputs/Button'
+import Button from "./components/inputs/Button";
+import Card from "./components/surfaces/Card";
 
-export { Button }
+export { Button, Card };

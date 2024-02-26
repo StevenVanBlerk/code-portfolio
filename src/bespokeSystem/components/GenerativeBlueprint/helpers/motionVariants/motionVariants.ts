@@ -47,13 +47,13 @@ export const animateNodeGroup = {
 export const animateNodeRadius = {
   animate: ({
     sequence,
-    radiusMultiplier,
+    nodeRadiusMultiplier,
     stepDuration,
   }: animateNodeRadiusParams) => {
     const initialDelay = 0;
 
     const rSequence = sequence.map((step) => {
-      return step.r * radiusMultiplier;
+      return step.r * nodeRadiusMultiplier;
     });
     const sequenceDuration = stepDuration * sequence.length;
     const commonTransition = getCommonTransition(sequenceDuration);
