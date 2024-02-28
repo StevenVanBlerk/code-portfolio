@@ -1,5 +1,5 @@
+import React, { useState, useContext } from "react";
 import { ConnectionPathsProps } from "./_types";
-import { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { animateNodeConnection } from "../../helpers/motionVariants/motionVariants";
 import { calculatePathLength, normaliseOpacity } from "./helpers";

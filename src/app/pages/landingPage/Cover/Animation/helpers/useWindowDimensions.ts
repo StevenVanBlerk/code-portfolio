@@ -15,7 +15,10 @@ const useWindowDimensions = () => {
     return { width: window.innerWidth, height: window.innerHeight };
   };
 
-  const [windowDimensions, setWindowDimensions] = useState(initialDimensions);
+  const [windowDimensions, setWindowDimensions] = useState<{
+    width: number | null;
+    height: number | null;
+  }>(initialDimensions);
 
   const invalidateWindowDimensions = () => {
     setWindowDimensions(getWindowDimensions());
