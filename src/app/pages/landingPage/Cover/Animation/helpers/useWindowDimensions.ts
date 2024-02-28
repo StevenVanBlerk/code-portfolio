@@ -9,20 +9,10 @@ const useWindowDimensions = () => {
     height: number | null;
   }>(initialDimensions);
 
-  const hasWindow = typeof window !== "undefined";
-  if (!hasWindow)
-    return {
-      windowDimensions: initialDimensions,
-      invalidateWindowDimensions: () => {},
-    };
-
   const getWindowDimensions = () => {
     return { width: window.innerWidth, height: window.innerHeight };
   };
 
-  const invalidateWindowDimensions = () => {
-    setWindowDimensions(getWindowDimensions());
-  };
   useEffect(() => {
     const handleResize = () => {
       setWindowDimensions(getWindowDimensions());
@@ -30,6 +20,17 @@ const useWindowDimensions = () => {
     window.addEventListener("resize", debounce(handleResize, 250)); //debouncing to delay rerender till the user has stopped resizing
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const hasWindow = typeof window !== "undefined";
+  if (!hasWindow)
+    return {
+      windowDimensions: initialDimensions,
+      invalidateWindowDimensions: () => {},
+    };
+
+  const invalidateWindowDimensions = () => {
+    setWindowDimensions(getWindowDimensions());
+  };
 
   return { windowDimensions, invalidateWindowDimensions };
 };
