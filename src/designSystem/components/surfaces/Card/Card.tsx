@@ -1,4 +1,4 @@
-const Card = ({ children }) => (
+const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div
     //    className="text-center place-self-center text-white"
     style={{
