@@ -49,7 +49,15 @@ const Animation = () => {
     isPlaying: true,
   };
 
-  return <GenerativeBlueprint preset={backgroundPreset} />;
+  return (
+    <div
+      style={{
+        justifySelf: "right",
+      }}
+    >
+      <GenerativeBlueprint preset={backgroundPreset} />
+    </div>
+  );
 };
 
 export default Animation;

@@ -8,7 +8,7 @@ const Cover = () => {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "50% 50%",
+        gridTemplateColumns: "1fr 1fr",
         alignItems: "center",
         height: "100vh",
       }}
