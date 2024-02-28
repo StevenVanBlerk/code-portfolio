@@ -9,11 +9,12 @@ const SVGFrame = ({ children }: SVGFrameProps) => {
 
   const frameHeight = canvasHeight + canvasMargin * 2;
   const frameWidth = canvasWidth + canvasMargin * 2;
+  if (!frameHeight || !frameWidth) return;
   return (
     <div>
       <motion.svg
-        width={frameWidth}
-        height={frameHeight}
+        width={frameWidth.toString()}
+        height={frameHeight.toString()}
         viewBox={`0 0 ${frameWidth} ${frameHeight}`}
         initial="initial"
         animate="animate"

@@ -1,18 +1,21 @@
+"use client";
 import { useEffect, useState } from "react";
 import { debounce } from "lodash";
 
 const useWindowDimensions = () => {
+  const initialDimensions = { width: null, height: null };
   const hasWindow = typeof window !== "undefined";
-  if (!hasWindow) return;
+  if (!hasWindow)
+    return {
+      windowDimensions: initialDimensions,
+      invalidateWindowDimensions: () => {},
+    };
 
   const getWindowDimensions = () => {
     return { width: window.innerWidth, height: window.innerHeight };
   };
 
-  const [windowDimensions, setWindowDimensions] = useState({
-    width: undefined,
-    height: undefined,
-  });
+  const [windowDimensions, setWindowDimensions] = useState(initialDimensions);
 
   const invalidateWindowDimensions = () => {
     setWindowDimensions(getWindowDimensions());
@@ -21,7 +24,7 @@ const useWindowDimensions = () => {
     const handleResize = () => {
       setWindowDimensions(getWindowDimensions());
     };
-    window.addEventListener("resize", debounce(handleResize, 250));
+    window.addEventListener("resize", debounce(handleResize, 250)); //debouncing to delay rerender till the user has stopped resizing
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 

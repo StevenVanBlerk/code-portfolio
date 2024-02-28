@@ -25,7 +25,8 @@ const Nodes = ({ gridNodes }: NodesProps) => {
       >
         <motion.circle
           stroke="#fff"
-          strokeWidth={0.5}
+          strokeWidth={1}
+          // strokeWidth={0.5}
           fill="transparent"
           initial="initial"
           animate="animate"
@@ -36,8 +37,8 @@ const Nodes = ({ gridNodes }: NodesProps) => {
             stepDuration,
           }}
         />
-        {/* <circle stroke="#fff" strokeWidth={2} r={1} fill="#fff" /> */}
-        <circle stroke="#fff" strokeWidth={1} r={0.1} fill="#fff" />
+        <circle stroke="#fff" strokeWidth={2} r={0.5} fill="#fff" />
+        {/* <circle stroke="#fff" strokeWidth={1} r={0.1} fill="#fff" /> */}
       </motion.g>
     );
   });

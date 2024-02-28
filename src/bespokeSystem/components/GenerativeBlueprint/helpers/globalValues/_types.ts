@@ -27,6 +27,10 @@ export type ContextData = {
   isPlaying: boolean;
 };
 
+export type ContextDataAndInitialisers = ContextData & {
+  initialisePreset: (preset: ContextData) => void;
+};
+
 export type GlobalValuesContextProviderProps = {
   children: ReactNode;
 };

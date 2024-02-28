@@ -1,17 +1,28 @@
 "use client"; // deactivating SSR. Alternative approach --> https://www.framer.com/motion/component/##server-side-rendering
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Illustrator from "./Illustrator";
 import {
   GlobalValuesContext,
   GlobalValuesContextProvider,
 } from "./helpers/globalValues/globalValues";
 import useDirector from "./hooks/usePositionDirector/useDirector";
+import { ContextData } from "./helpers/globalValues/_types"; //TO-DO: move and rename type
 
-const Blueprint = () => {
+const Blueprint = ({ preset }: { preset: ContextData }) => {
   const globalValues = useContext(GlobalValuesContext);
-  const { columnCount, rowCount, nodeCount, stepCount, nodeMaxDisplacement } =
-    globalValues;
+  const {
+    columnCount,
+    rowCount,
+    nodeCount,
+    stepCount,
+    nodeMaxDisplacement,
+    initialisePreset,
+  } = globalValues;
+
+  useEffect(() => {
+    initialisePreset(preset);
+  }, [preset]);
 
   const director = useDirector({
     columnCount: columnCount,
@@ -24,10 +35,10 @@ const Blueprint = () => {
   return <Illustrator director={director} />;
 };
 
-const GenerativeBlueprint = () => {
+const GenerativeBlueprint = ({ preset }: { preset: ContextData }) => {
   return (
     <GlobalValuesContextProvider>
-      <Blueprint />
+      <Blueprint preset={preset} />
     </GlobalValuesContextProvider>
   );
 };

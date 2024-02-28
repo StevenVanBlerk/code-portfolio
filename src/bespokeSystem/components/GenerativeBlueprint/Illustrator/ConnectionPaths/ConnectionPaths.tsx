@@ -35,8 +35,10 @@ const ConnectionPaths = ({ nodeConnections }: ConnectionPathsProps) => {
       setX2(x2);
       setY2(y2);
     };
+
     return (
       <motion.line
+        key={key}
         stroke="#fff"
         initial="initial"
         animate={["animateA", "animateB", "animateOpacity"]}
