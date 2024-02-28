@@ -52,29 +52,3 @@ const noNodesDisplayedPreset: ContextData = {
   BackgroundGridColour: "red",
   isPlaying: true,
 };
-
-const columnCountSidebar = 5;
-const rowCountSidebar = 7;
-const gridGapSizeSideBar = 120;
-
-export const sideBarPreset: ContextData = {
-  canvasWidth: (columnCountSidebar - 1) * gridGapSizeSideBar, // column 0 is n-1 columns away from column n
-  canvasHeight: (rowCountSidebar - 1) * gridGapSizeSideBar,
-  canvasMargin: 13,
-  rowCount: rowCountSidebar,
-  columnCount: columnCountSidebar,
-  gridGapSize: gridGapSizeSideBar,
-  isBackgroundGridDisplayed: false,
-  areNodesDisplayed: true,
-  areConnectionPathsDisplayed: false,
-  AreNodesSynchronised: false,
-  stepCount: 12,
-  stepDuration: 3,
-  nodeCount: 14,
-  nodeMaxDisplacement: 3,
-  nodeRadiusMultiplier: 3,
-  connectionMinLength: 0 * gridGapSizeSideBar,
-  connectionMaxLength: 3.5 * gridGapSizeSideBar,
-  BackgroundGridColour: "blue",
-  isPlaying: false,
-};
