@@ -8,16 +8,16 @@ import { LineCoordinates } from "./_types";
 
 //TO-DO: maybe this file is unneeded. extract content to parent
 const ConnectionPaths = ({ nodeConnections }: ConnectionPathsProps) => {
-  return Object.entries(nodeConnections).map(([key, line]) => {
-    const globalValues = useContext(GlobalValuesContext);
-    const {
-      gridGapSize,
-      connectionMinLength,
-      connectionMaxLength,
-      stepDuration,
-      isPlaying,
-    } = globalValues;
+  const globalValues = useContext(GlobalValuesContext);
+  const {
+    gridGapSize,
+    connectionMinLength,
+    connectionMaxLength,
+    stepDuration,
+    isPlaying,
+  } = globalValues;
 
+  return Object.entries(nodeConnections).map(([key, line]) => {
     const [x1, setX1] = useState(line.sequenceA[0].x * gridGapSize);
     const [y1, setY1] = useState(line.sequenceA[0].y * gridGapSize);
     const [x2, setX2] = useState(line.sequenceB[0].x * gridGapSize);

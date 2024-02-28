@@ -4,6 +4,11 @@ import { debounce } from "lodash";
 
 const useWindowDimensions = () => {
   const initialDimensions = { width: null, height: null };
+  const [windowDimensions, setWindowDimensions] = useState<{
+    width: number | null;
+    height: number | null;
+  }>(initialDimensions);
+
   const hasWindow = typeof window !== "undefined";
   if (!hasWindow)
     return {
@@ -14,11 +19,6 @@ const useWindowDimensions = () => {
   const getWindowDimensions = () => {
     return { width: window.innerWidth, height: window.innerHeight };
   };
-
-  const [windowDimensions, setWindowDimensions] = useState<{
-    width: number | null;
-    height: number | null;
-  }>(initialDimensions);
 
   const invalidateWindowDimensions = () => {
     setWindowDimensions(getWindowDimensions());
