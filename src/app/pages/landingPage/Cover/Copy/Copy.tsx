@@ -45,7 +45,8 @@ const Copy = () => {
         </h2>
         <Button>Github</Button>
         <Button>Storybook</Button>
-        <Button> Creative coding</Button>
+        <Button>Cypress</Button>
+        <Button>Creative coding</Button>
         <Button>About me</Button>
         <Button>Download CV</Button>
         <Button>Edit animation</Button>
