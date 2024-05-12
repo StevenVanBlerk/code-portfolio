@@ -2,7 +2,7 @@ import { Card } from "@/designSystem";
 
 const WorkExperienceOption1 = () => {
   return (
-    <div className="grid gap-5">
+    <div>
       <Card>
         <h1>WORK EXPERIENCE</h1>
         <h2>OfferZen Sep 2021 - Present </h2>

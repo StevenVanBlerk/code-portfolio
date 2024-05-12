@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// import { colors } from "./src/designSystem"; // TO-DO: get import colors instead of defining them in this
 
 const config: Config = {
   content: [
@@ -7,7 +8,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: { charcoal: "#1e1e1e" },
+      fontFamily: {
+        minimalist: ["Minimalist"],
+      },
+    },
   },
   plugins: [],
 };

@@ -5,14 +5,7 @@ import Copy from "./Copy";
 
 const Cover = () => {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div className="grid grid-cols-2 items-center h-screen">
       <Copy />
       <Animation />
     </div>

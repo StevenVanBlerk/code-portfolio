@@ -50,11 +50,7 @@ const Animation = () => {
   };
 
   return (
-    <div
-      style={{
-        justifySelf: "right",
-      }}
-    >
+    <div className="justify-self-end">
       <GenerativeBlueprint preset={backgroundPreset} />
     </div>
   );

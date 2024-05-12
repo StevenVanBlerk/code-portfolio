@@ -48,6 +48,7 @@ const Copy = () => {
         <Button> Creative coding</Button>
         <Button>About me</Button>
         <Button>Download CV</Button>
+        <Button>Edit animation</Button>
       </div>
     </div>
   );

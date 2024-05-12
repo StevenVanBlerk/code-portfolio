@@ -2,7 +2,7 @@ import {
   randomArrayEntry,
   randomArrayStep,
   randomInteger,
-} from "@/designSystem/utilities/randomGenerators";
+} from "@/designSystem";
 import {
   InitialiseGridNodesParams,
   InitialiseNodeConnectionsParams,
@@ -48,15 +48,15 @@ export const initialiseGridNodes = ({
         previousStep.x + xDiff < 0
           ? 0
           : previousStep.x + xDiff > columnCount - 1
-          ? columnCount - 1
-          : previousStep.x + xDiff;
+            ? columnCount - 1
+            : previousStep.x + xDiff;
 
       const newY =
         previousStep.y + yDiff < 0
           ? 0
           : previousStep.y + yDiff > rowCount - 1
-          ? rowCount - 1
-          : previousStep.y + yDiff;
+            ? rowCount - 1
+            : previousStep.y + yDiff;
 
       const newRadius = randomArrayStep({
         array: allowedRadiusValues,

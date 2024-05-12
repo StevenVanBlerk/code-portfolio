@@ -2,7 +2,7 @@ import { Card } from "@/designSystem";
 
 const SkillsOption1 = () => {
   return (
-    <div className="text-center grid gap-5">
+    <div>
       <Card>
         <h1>SKILLS</h1>
         <h2>Core frameworks</h2>
