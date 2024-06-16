@@ -4,7 +4,7 @@ import GenerativeBlueprint from "@/bespokeSystem/components/animations/Generativ
 import useWindowDimensions from "./helpers/useWindowDimensions";
 import { useEffect } from "react";
 
-const Animation = () => {
+const BackgroundImplementation = () => {
   const { windowDimensions, invalidateWindowDimensions } =
     useWindowDimensions();
 
@@ -56,4 +56,4 @@ const Animation = () => {
   );
 };
 
-export default Animation;
+export default BackgroundImplementation;
