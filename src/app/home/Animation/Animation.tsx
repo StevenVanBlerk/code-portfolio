@@ -1,6 +1,6 @@
 "use client";
 
-import GenerativeBlueprint from "@/bespokeSystem/components/GenerativeBlueprint/GenerativeBlueprint";
+import GenerativeBlueprint from "@/bespokeSystem/components/animations/GenerativeBlueprint";
 import useWindowDimensions from "./helpers/useWindowDimensions";
 import { useEffect } from "react";
 
