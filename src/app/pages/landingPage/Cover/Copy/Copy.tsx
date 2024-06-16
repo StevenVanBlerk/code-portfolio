@@ -1,7 +1,7 @@
-import React from "react";
-// import { Button } from "@/shadcn/ui/Button";
+import Link from "next/link";
+import React, { ReactNode } from "react";
 
-const Button: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Button = ({ children }: { children: ReactNode }) => {
   return (
     <button
       style={{
@@ -17,9 +17,36 @@ const Button: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
+type StyledLinkProps = {
+  href: string;
+  children: ReactNode;
+  openInNewTab?: boolean;
+};
+
+const StyledLink = ({ href, children, openInNewTab }: StyledLinkProps) => {
+  const isInternal = href?.[0] === "/";
+  return (
+    <Link
+      href={href}
+      target={openInNewTab ? "/" : undefined}
+      style={{
+        fontSize: "26px",
+        marginLeft: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "fit-content",
+      }}
+    >
+      {isInternal && "/"}
+      {children}
+    </Link>
+  );
+};
+
 const Copy = () => {
   return (
-    <div>
+    <div className="">
       <div
         style={{
           fontFamily: "Minimalist",
@@ -30,10 +57,9 @@ const Copy = () => {
         <h1
           style={{
             fontSize: "70px",
-            overflowWrap: "break-word",
           }}
         >
-          <span>Steven van Blerk</span>
+          Steven <span className="whitespace-nowrap">van Blerk</span>
         </h1>
         <h2
           style={{
@@ -44,11 +70,16 @@ const Copy = () => {
         >
           Frontend engineer
         </h2>
-        <Button>Github</Button>
-        <Button>Storybook</Button>
-        <Button>Cypress</Button>
-        <Button>Creative coding</Button>
-        <Button>About me</Button>
+        <StyledLink
+          href="https://github.com/StevenVanBlerk/code-portfolio"
+          openInNewTab
+        >
+          Github
+        </StyledLink>
+        <StyledLink href="/storybook">Storybook</StyledLink>
+        <StyledLink href="/cypress">Cypress</StyledLink>
+        <StyledLink href="/creative-coding">Creative coding</StyledLink>
+        <StyledLink href="/about">About me</StyledLink>
         <Button>Download CV</Button>
         <Button>Edit animation</Button>
       </div>
