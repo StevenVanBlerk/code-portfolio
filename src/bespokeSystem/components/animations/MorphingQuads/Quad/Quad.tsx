@@ -84,24 +84,20 @@ const Quad = ({
   }, [isLocalExpanded]);
 
   return (
-    <div
-      onMouseEnter={
-        isInteractive
-          ? () => {
-              setIsForcingAnimation(true);
-              setIsLocalExpanded((prevState) => !prevState);
-            }
-          : undefined
-      }
-      role={isInteractive ? "button" : "none"}
-      onClick={
-        isInteractive
-          ? () => {
-              setIsForcingAnimation(true);
-              setIsLocalExpanded((prevState) => !prevState);
-            }
-          : undefined
-      }
+    <button
+      onTouchStartCapture={() => {
+        setIsForcingAnimation(true);
+        setIsLocalExpanded((prevState) => !prevState);
+      }}
+      onMouseEnter={() => {
+        setIsForcingAnimation(true);
+        setIsLocalExpanded((prevState) => !prevState);
+      }}
+      onClick={() => {
+        setIsForcingAnimation(true);
+        setIsLocalExpanded((prevState) => !prevState);
+      }}
+      disabled={!isInteractive}
       style={{
         left: x,
         top: y,
@@ -131,7 +127,7 @@ const Quad = ({
       >
         {isInDebugMode && transitionDelay}
       </div>
-    </div>
+    </button>
   );
 };
 
