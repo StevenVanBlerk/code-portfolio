@@ -46,43 +46,40 @@ const StyledLink = ({ href, children, openInNewTab }: StyledLinkProps) => {
 
 const Copy = () => {
   return (
-    <div className="">
-      <div
+    <div
+      style={{
+        fontFamily: "Minimalist",
+        textAlign: "right",
+      }}
+    >
+      <h1
         style={{
-          fontFamily: "Minimalist",
-          textAlign: "right",
-          height: "100%",
+          fontSize: "70px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "70px",
-          }}
-        >
-          Steven <span className="whitespace-nowrap">van Blerk</span>
-        </h1>
-        <h2
-          style={{
-            fontSize: "36px",
-            marginTop: "-30px",
-            marginBottom: "24px",
-          }}
-        >
-          Frontend engineer
-        </h2>
-        <StyledLink
-          href="https://github.com/StevenVanBlerk/code-portfolio"
-          openInNewTab
-        >
-          Github
-        </StyledLink>
-        <StyledLink href="/storybook">Storybook</StyledLink>
-        <StyledLink href="/cypress">Cypress</StyledLink>
-        <StyledLink href="/creative-coding">Creative coding</StyledLink>
-        <StyledLink href="/about">About me</StyledLink>
-        <Button>Download CV</Button>
-        <Button>Edit animation</Button>
-      </div>
+        Steven <span className="whitespace-nowrap">van Blerk</span>
+      </h1>
+      <h2
+        style={{
+          fontSize: "36px",
+          marginTop: "-30px",
+          marginBottom: "24px",
+        }}
+      >
+        Frontend engineer
+      </h2>
+      <StyledLink
+        href="https://github.com/StevenVanBlerk/code-portfolio"
+        openInNewTab
+      >
+        Github
+      </StyledLink>
+      <StyledLink href="/storybook">Storybook</StyledLink>
+      <StyledLink href="/cypress">Cypress</StyledLink>
+      <StyledLink href="/creative-coding">Creative coding</StyledLink>
+      <StyledLink href="/about">About me</StyledLink>
+      <Button>Download CV</Button>
+      <Button>Edit animation</Button>
     </div>
   );
 };

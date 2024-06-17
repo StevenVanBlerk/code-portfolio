@@ -1,7 +1,7 @@
 "use client";
 
 import GenerativeBlueprint from "@/bespokeSystem/components/animations/GenerativeBlueprint";
-import useWindowDimensions from "./helpers/useWindowDimensions";
+import useWindowDimensions from "../../../../../designSystem/utilities/useWindowDimensions";
 import { useEffect } from "react";
 
 const BackgroundImplementation = () => {
