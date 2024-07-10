@@ -31,7 +31,7 @@ const MorphingQuadsAnimation = () => {
         // isInteractive={false}
         isInitialisedExpanded={false}
         // isInDebugMode={true}
-        transitionProps={{ frequency: 6000, transitionDuration: 1 }}
+        transitionProps={{ frequency: 9000, transitionDuration: 1 }}
         styleProps={{
           gap: 8,
           scaleFactor: 6,

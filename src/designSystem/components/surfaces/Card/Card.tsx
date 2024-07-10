@@ -1,5 +1,11 @@
-const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="mx-16 border-b border-white">{children}</div>
+type CardProps = { children: React.ReactNode; className: string };
+
+const Card = ({ children, className = "" }: CardProps) => (
+  <section
+    className={`w-fit rounded-sm border-4 border-light-charcoal bg-charcoal p-3 ${className}`}
+  >
+    {children}
+  </section>
 );
 
 export default Card;

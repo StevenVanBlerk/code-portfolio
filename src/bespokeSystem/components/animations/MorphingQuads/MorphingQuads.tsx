@@ -83,7 +83,7 @@ const MorphingQuads = ({
             : undefined,
         }}
       >
-        <div style={{ position: "relative" }}>
+        <div>
           {quadPropsSet.map(({ key, isExpanded, x, y, transitionDelay }) => (
             <Quad
               key={key}

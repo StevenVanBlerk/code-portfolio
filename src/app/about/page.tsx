@@ -1,3 +1,3 @@
-export default function AboutPage() {
-  return <div>Stuff about me</div>;
-}
+import AboutPage from "./AboutPage";
+
+export default AboutPage;

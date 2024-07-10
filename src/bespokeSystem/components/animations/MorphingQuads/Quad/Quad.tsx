@@ -48,6 +48,7 @@ const Quad = ({
     setIsLocalExpanded((prevState) => !prevState);
   }, [isExpanded]);
 
+  // TO-DO: experiment with having animation play out in a wave. nodes expand the quickly retract afterwards. 90% of the time a node is contracted
   useEffect(() => {
     // TO-DO: experiment with adding a border-radius while animating
     if (isLocalExpanded) {

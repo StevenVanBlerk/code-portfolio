@@ -1,8 +1,8 @@
 //components
-import Button from "./components/inputs/Button";
+import TextButton from "./components/inputs/TextButton";
 import Card from "./components/surfaces/Card";
 
-export { Button, Card };
+export { TextButton, Card };
 
 // utilities
 import {

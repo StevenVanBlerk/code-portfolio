@@ -5,14 +5,16 @@ type ButtonProps = DetailedHTMLProps<
   HTMLButtonElement
 >;
 
-const Button = ({ children, className = "" }: ButtonProps) => {
+const TextButton = ({
+  children,
+  className = "",
+  ...buttonProps
+}: ButtonProps) => {
   return (
-    <button
-      className={`w-fit rounded-md border-2 bg-white p-1 text-lg text-black ${className}`}
-    >
+    <button className={`w-fit text-2xl ${className}`} {...buttonProps}>
       {children}
     </button>
   );
 };
 
-export default Button;
+export default TextButton;

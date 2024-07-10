@@ -1,3 +1,3 @@
-import Cover from "./Cover";
+import HomePage from "./HomePage";
 
-export default Cover;
+export default HomePage;
