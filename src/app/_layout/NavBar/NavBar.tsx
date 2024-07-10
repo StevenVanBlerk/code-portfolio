@@ -6,111 +6,147 @@ import TextLink from "@/designSystem/components/navigation/TextLink";
 import NextImage from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { MotionConfig, motion, useAnimationControls } from "framer-motion";
 
 const NavBar = () => {
   const pathname = usePathname();
   const isOnHomePage = pathname === "/";
 
-  const [isExpanded, setIsExpanded] = useState(isOnHomePage ? true : true);
+  const [isExpanded, setIsExpanded] = useState(isOnHomePage ? false : true);
   const toggleNavBar = () => setIsExpanded((prevState) => !prevState);
 
   const currentPathClassName = "underline";
 
-  // const expandedWrapperClassNames = "translate-y-0";
-  // const contractedWrapperClassNames = "-translate-y-full";
-  const expandedWrapperClassNames = "h-full translate-y-0";
-  const contractedWrapperClassNames = "h-8 -translate-y-full";
-
-  const wrapperClassName = `overflow-hidden duration-500 ${isExpanded ? expandedWrapperClassNames : contractedWrapperClassNames}`;
   useEffect(() => {
     if (!isOnHomePage) {
       setIsExpanded(true);
+    } else {
     }
   }, [pathname]);
 
-  return (
-    <div
-      className={
-        "grid grid-cols-1 justify-items-center overflow-hidden text-center " +
-        wrapperClassName
-      }
-    >
-      <div className={isExpanded ? "h-full" : "h-0 overflow-hidden"}>
-        <header>
-          <TextLink href="/">
-            <h1 className="text-nowrap">
-              Steven <span>van Blerk</span>
-            </h1>
-          </TextLink>
-          <h2>Frontend engineer</h2>
-        </header>
+  const tweenConfig = {
+    type: "tween",
+    duration: 0.5,
+  };
 
-        <nav className="mt-5">
-          <ul className="flex justify-center gap-4">
-            <li>
-              <TextLink
-                href="/demos"
-                className={pathname === "/demos" ? currentPathClassName : ""}
-              >
-                Demo projects
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="/storybook"
+  const controls = useAnimationControls(); // TO-DO: rename
+
+  useEffect(() => {
+    if (!isExpanded) {
+      controls.start(
+        { y: [0, -15] },
+        {
+          duration: 1,
+          delay: 2,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        },
+      );
+    } else {
+      controls.stop();
+    }
+  }, [isExpanded]);
+  return (
+    <MotionConfig transition={tweenConfig}>
+      <div className="mx-auto grid w-fit grid-cols-1 justify-items-center text-center">
+        <motion.div
+          animate={isExpanded ? "expanded" : "closed"}
+          // TO-DO: migrate motion css to tailwind https://www.youtube.com/watch?v=xSuxsfn13xg
+          initial={
+            isExpanded
+              ? {
+                  marginTop: "0px",
+                  opacity: 100,
+                }
+              : {
+                  marginTop: "-250px",
+                  opacity: 0,
+                }
+          }
+          variants={{
+            expanded: {
+              marginTop: "0px",
+              opacity: 100,
+            },
+            closed: {
+              marginTop: "-250px",
+              opacity: 0,
+            },
+          }}
+        >
+          <nav>
+            <TextLink href="/">
+              <header>
+                <h1 className="text-nowrap">
+                  Steven <span>van Blerk</span>
+                </h1>
+                <h2>Frontend engineer</h2>
+              </header>
+            </TextLink>
+            <ul className="mt-5 flex justify-center gap-4">
+              <li className={pathname === "/demos" ? currentPathClassName : ""}>
+                <TextLink href="/demos">Demo projects</TextLink>
+              </li>
+              <li
                 className={
                   pathname === "/storybook" ? currentPathClassName : ""
                 }
               >
-                Storybook
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="/cypress"
+                <TextLink href="/storybook">Storybook</TextLink>
+              </li>
+              <li
                 className={pathname === "/cypress" ? currentPathClassName : ""}
               >
-                Cypress
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="/creativeCoding"
+                <TextLink href="/cypress">Cypress</TextLink>
+              </li>
+              <li
                 className={
                   pathname === "/creativeCoding" ? currentPathClassName : ""
                 }
               >
-                Creative coding
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="/about"
-                className={pathname === "/about" ? currentPathClassName : ""}
-              >
-                About me
-              </TextLink>
-            </li>
-          </ul>
-        </nav>
+                <TextLink href="/creativeCoding">Creative coding</TextLink>
+              </li>
+              <li className={pathname === "/about" ? currentPathClassName : ""}>
+                <TextLink href="/about">About me</TextLink>
+              </li>
+            </ul>
+          </nav>
 
-        <Button className="mt-2">Download CV</Button>
+          <Button className="mt-6">Download CV</Button>
+        </motion.div>
+
+        {isOnHomePage && (
+          <TextButton
+            as={motion.button}
+            className="mt-3 p-1"
+            animate={isExpanded ? "expanded" : "closed"}
+            initial={
+              isExpanded
+                ? {
+                    rotateZ: 0,
+                  }
+                : { rotateZ: 180 }
+            }
+            variants={{
+              expanded: { rotateZ: 0 },
+              closed: { rotateZ: 180 },
+            }}
+            onClick={toggleNavBar}
+            aria-label={isExpanded ? "Close navigation" : "Open navigation"}
+          >
+            <motion.div animate={controls}>
+              <NextImage
+                src="/icons/chevron-up.svg"
+                width={40}
+                height={40}
+                alt={isExpanded ? "Close icon" : "Open icon"}
+              />
+            </motion.div>
+          </TextButton>
+        )}
       </div>
-      {isOnHomePage && (
-        <TextButton
-          aria-label={isExpanded ? "Close navigation" : "Open navigation"}
-          className={`mt-3 ${isExpanded ? "rotate-0" : "rotate-180"}`}
-          onClick={toggleNavBar}
-        >
-          <NextImage
-            src="/icons/chevron-up.svg"
-            width={40}
-            height={40}
-            alt={isExpanded ? "Close navigation" : "Open navigation"}
-          />
-        </TextButton>
-      )}
-    </div>
+    </MotionConfig>
   );
 };
 

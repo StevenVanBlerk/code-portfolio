@@ -1,4 +1,4 @@
-type CardProps = { children: React.ReactNode; className: string };
+type CardProps = { children: React.ReactNode; className?: string };
 
 const Card = ({ children, className = "" }: CardProps) => (
   <section

@@ -39,10 +39,10 @@ const MorphingQuads = ({
   const columnMaxWidth = Math.floor(canvasWidth / (columnCount + 0.5)); //0.5 accounts for offset rows
   const rowMaxHeight = columnMaxWidth;
 
-  const rowCount = Math.floor(canvasHeight / rowMaxHeight) * 2 - 1; //TO-DO: confirm if -1 is always needed and correct
+  const rowCount = Math.floor(canvasHeight / rowMaxHeight) * 2; //- 1; //TO-DO: confirm if -1 is always needed and correct
 
   const actualRowCount = rowCount + (isOverflowing ? 3 : 0);
-  const actualColumnCount = columnCount + (isOverflowing ? 1 : 0);
+  const actualColumnCount = columnCount + (isOverflowing ? 3 : 0);
 
   let quadPropsSet = [];
   for (let i = 0; i < actualRowCount; i++) {

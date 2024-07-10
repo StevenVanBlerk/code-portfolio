@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { ReactNode } from "react";
 
 type TextLinkProps = {
@@ -6,7 +6,7 @@ type TextLinkProps = {
   children: ReactNode;
   className?: string;
   openInNewTab?: boolean;
-};
+} & LinkProps;
 
 const TextLink = ({
   href,

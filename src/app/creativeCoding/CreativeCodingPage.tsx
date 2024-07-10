@@ -1,3 +1,5 @@
-const StorybookPage = () => {
-  return <div>P5 and perlins</div>;
+const CreativeCodingPage = () => {
+  return <div>P5 and Perlin noise</div>;
 };
+
+export default CreativeCodingPage;

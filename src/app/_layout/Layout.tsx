@@ -14,9 +14,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <body className={`${raleway.variable}`}>
         <main>
           <MorphinQuadsAnimation />
-          <div className="relative z-10 grid grid-cols-1 gap-6 p-6">
+          <div className="relative z-10">
             <NavBar />
-            <section>{children}</section>
+            <section className="mt-6">{children}</section>
           </div>
         </main>
       </body>
