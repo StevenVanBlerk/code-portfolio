@@ -61,8 +61,8 @@ const DemosPage = () => {
           codebaseHref="https://github.com/StevenVanBlerk/emotion-wheel"
           previewSrc="/images/demos/emotion wheel.png"
         >
-          You're looking at it. This is built primarily using NextJS, Tailwind
-          CSS, and Framer motion.
+          You&apos;re looking at it. This is built primarily using NextJS,
+          Tailwind CSS, and Framer motion.
         </Demo>
       </li>
 
