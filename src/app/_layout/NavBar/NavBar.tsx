@@ -76,7 +76,7 @@ const NavBar = () => {
           }}
         >
           <nav>
-            <TextLink href="/">
+            <TextLink className="mx-auto" href="/">
               <header>
                 <h1 className="text-nowrap">
                   Steven <span>van Blerk</span>
@@ -84,31 +84,25 @@ const NavBar = () => {
                 <h2>Frontend engineer</h2>
               </header>
             </TextLink>
-            <ul className="mt-5 flex justify-center gap-4">
+            <ul className="mt-5 flex justify-center">
               <li className={pathname === "/demos" ? currentPathClassName : ""}>
-                <TextLink href="/demos">Demo projects</TextLink>
-              </li>
-              <li
-                className={
-                  pathname === "/storybook" ? currentPathClassName : ""
-                }
-              >
-                <TextLink href="/storybook">Storybook</TextLink>
-              </li>
-              <li
-                className={pathname === "/cypress" ? currentPathClassName : ""}
-              >
-                <TextLink href="/cypress">Cypress</TextLink>
+                <TextLink href="/demos" className="p-2">
+                  Demo projects
+                </TextLink>
               </li>
               <li
                 className={
                   pathname === "/creativeCoding" ? currentPathClassName : ""
                 }
               >
-                <TextLink href="/creativeCoding">Creative coding</TextLink>
+                <TextLink href="/creativeCoding" className="p-2">
+                  Creative coding
+                </TextLink>
               </li>
               <li className={pathname === "/about" ? currentPathClassName : ""}>
-                <TextLink href="/about">About me</TextLink>
+                <TextLink href="/about" className="p-2">
+                  About me
+                </TextLink>
               </li>
             </ul>
           </nav>

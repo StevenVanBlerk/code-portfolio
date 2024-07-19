@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import Link, { LinkProps } from "next/link";
 import { ReactNode } from "react";
 
@@ -6,6 +7,7 @@ type TextLinkProps = {
   children: ReactNode;
   className?: string;
   openInNewTab?: boolean;
+  hasExternalLinkIcon?: boolean;
 } & LinkProps;
 
 const TextLink = ({
@@ -13,13 +15,22 @@ const TextLink = ({
   children,
   className = "",
   openInNewTab,
+  hasExternalLinkIcon = false,
 }: TextLinkProps) => {
   return (
     <Link
       href={href}
       target={openInNewTab ? "/" : undefined}
-      className={`text-2xl ${className}`}
+      className={`flex w-fit gap-1 align-middle text-2xl ${className}`}
     >
+      {hasExternalLinkIcon && (
+        <NextImage
+          src="/icons/open-external-link.svg"
+          width={13}
+          height={13}
+          alt={`open ${href}`}
+        />
+      )}
       {children}
     </Link>
   );

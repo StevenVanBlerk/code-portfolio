@@ -17,7 +17,7 @@ const MorphingQuadsAnimation = () => {
   const canvasHeight = windowDimensions.height - canvasMargin - canvasMargin; //accounting for margin on either side
   const canvasWidth = windowDimensions.width;
   return (
-    <div className="absolute overflow-hidden">
+    <div className="fixed overflow-hidden">
       <MorphingQuads
         canvasHeight={canvasHeight}
         canvasWidth={canvasWidth}

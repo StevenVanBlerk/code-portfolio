@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 import NextImage from "next/image";
-import Link from "next/link";
 import { Card } from "@/designSystem";
+import TextLink from "@/designSystem/components/navigation/TextLink";
 
 type DemoProps = {
   name: string;
   codebaseHref?: string;
   deploymentHref?: string;
-  screenshotSrc?: string;
+  previewSrc?: string;
   children: ReactNode;
 };
 
@@ -15,7 +15,7 @@ const Demo = ({
   name,
   codebaseHref,
   deploymentHref,
-  screenshotSrc,
+  previewSrc,
   children,
 }: DemoProps) => {
   return (
@@ -23,17 +23,38 @@ const Demo = ({
       <header>
         <h2>{name}</h2>
       </header>
-      {deploymentHref && <Link href={deploymentHref}>Deployment</Link>}
-      {codebaseHref && <Link href={codebaseHref}>Codebase</Link>}
-      {screenshotSrc && (
-        <NextImage
-          src={screenshotSrc}
-          alt={`${name} screenshot`}
-          width={600}
-          height={300}
-        />
+
+      <div className="mx-auto grid w-fit grid-cols-2 gap-6">
+        {deploymentHref && (
+          <TextLink hasExternalLinkIcon href={deploymentHref} openInNewTab>
+            Deployment
+          </TextLink>
+        )}
+        {codebaseHref && (
+          <TextLink hasExternalLinkIcon href={codebaseHref} openInNewTab>
+            Repository
+          </TextLink>
+        )}
+      </div>
+
+      <div className="mt-4">{children}</div>
+
+      {previewSrc && deploymentHref && (
+        <TextLink
+          href={deploymentHref}
+          openInNewTab
+          className="mx-auto my-4 px-8"
+        >
+          <NextImage
+            src={previewSrc}
+            alt={`${name} preview`}
+            width={0}
+            height={0}
+            sizes="100%"
+            className="h-auto w-full rounded-md"
+          />
+        </TextLink>
       )}
-      {children}
     </Card>
   );
 };
