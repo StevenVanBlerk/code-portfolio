@@ -15,7 +15,7 @@ const config = {
       colors: {
         "dark-charcoal": "#151515",
         charcoal: "#1e1e1e",
-        "light-charcoal": "#333333",
+        "light-charcoal": "#414040",
       },
       keyframes: {
         "accordion-down": {
