@@ -13,6 +13,7 @@ const config = {
         raleway: ["var(--font-raleway)"], //minimalist has incorrect unicode values. use something else and delete Minimalist
       },
       colors: {
+        "dark-charcoal": "#151515",
         charcoal: "#1e1e1e",
         "light-charcoal": "#333333",
       },

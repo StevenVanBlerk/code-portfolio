@@ -36,7 +36,7 @@ const MorphingQuadsAnimation = () => {
           gap: 8,
           scaleFactor: 6,
           rotationCount: 1,
-          fill: "#555",
+          fill: "#333333", //light-charcoal
           borderRadius: 3,
         }}
       />
