@@ -16,12 +16,14 @@ const TextLink = ({
   className = "",
   openInNewTab,
   hasExternalLinkIcon = false,
+  ...linkProps
 }: TextLinkProps) => {
   return (
     <Link
       href={href}
       target={openInNewTab ? "/" : undefined}
       className={`flex w-fit gap-1 align-middle text-2xl ${className}`}
+      {...linkProps}
     >
       {hasExternalLinkIcon && (
         <NextImage

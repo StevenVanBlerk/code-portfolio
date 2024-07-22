@@ -12,15 +12,19 @@ const NavBar = () => {
   const pathname = usePathname();
   const isOnHomePage = pathname === "/";
 
+  const [desiredPath, setDesiredPath] = useState(pathname);
+
   const [isExpanded, setIsExpanded] = useState(isOnHomePage ? false : true);
+
   const toggleNavBar = () => setIsExpanded((prevState) => !prevState);
 
   const currentPathClassName = "underline";
 
   useEffect(() => {
+    // setDesiredPath(pathname);
+
     if (!isOnHomePage) {
       setIsExpanded(true);
-    } else {
     }
   }, [pathname]);
 
@@ -76,7 +80,11 @@ const NavBar = () => {
           }}
         >
           <nav>
-            <TextLink className="mx-auto" href="/">
+            <TextLink
+              className="mx-auto"
+              href="/"
+              onClick={() => setDesiredPath("/")}
+            >
               <header>
                 <h1 className="text-nowrap">
                   Steven <span>van Blerk</span>
@@ -87,24 +95,38 @@ const NavBar = () => {
             <ul className="mt-5 flex justify-center">
               <li
                 className={
-                  pathname === "/codeSamples" ? currentPathClassName : ""
+                  desiredPath === "/codeSamples" ? currentPathClassName : ""
                 }
               >
-                <TextLink href="/codeSamples" className="p-2">
+                <TextLink
+                  className="p-2"
+                  href="/codeSamples"
+                  onClick={() => setDesiredPath("/codeSamples")}
+                >
                   Code samples
                 </TextLink>
               </li>
               <li
                 className={
-                  pathname === "/creativeCoding" ? currentPathClassName : ""
+                  desiredPath === "/creativeCoding" ? currentPathClassName : ""
                 }
               >
-                <TextLink href="/creativeCoding" className="p-2">
+                <TextLink
+                  href="/creativeCoding"
+                  className="p-2"
+                  onClick={() => setDesiredPath("/creativeCoding")}
+                >
                   Creative coding
                 </TextLink>
               </li>
-              <li className={pathname === "/about" ? currentPathClassName : ""}>
-                <TextLink href="/about" className="p-2">
+              <li
+                className={desiredPath === "/about" ? currentPathClassName : ""}
+              >
+                <TextLink
+                  className="p-2"
+                  href="/about"
+                  onClick={() => setDesiredPath("/about")}
+                >
                   About me
                 </TextLink>
               </li>
