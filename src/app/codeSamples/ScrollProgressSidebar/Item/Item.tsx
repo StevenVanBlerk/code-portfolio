@@ -45,8 +45,9 @@ const Item = ({ extendedRef, label, itemCount }: ItemProps) => {
   return (
     <li>
       <TextButton
+        className="group"
         as={motion.button}
-        initial={{ fontWeight: 100 }}
+        initial={{ fontWeight }}
         animate={{ fontWeight }}
         onClick={() => {
           extendedRef.ref.current?.scrollIntoView({
@@ -56,13 +57,14 @@ const Item = ({ extendedRef, label, itemCount }: ItemProps) => {
           });
         }}
       >
-        <div className="flex">
+        <div className="flex group-hover:text-gray-300">
           <svg
             className="overflow-visible" // allowing circle bounce animation to spill out of svg frame
             width={svgFrameWidth}
             height={svgFrameWidth}
           >
             <motion.circle
+              // className="group-hover:" // TO-DO: experiment maximising r on group-hover
               stroke="#fff"
               fill="transparent"
               cx="50%"
