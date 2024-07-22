@@ -87,7 +87,7 @@ const NavBar = () => {
             <ul className="mt-5 flex justify-center">
               <li className={pathname === "/demos" ? currentPathClassName : ""}>
                 <TextLink href="/demos" className="p-2">
-                  Demo projects
+                  Code samples
                 </TextLink>
               </li>
               <li
