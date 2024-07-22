@@ -3,7 +3,7 @@ import NextImage from "next/image";
 import { Card } from "@/designSystem";
 import TextLink from "@/designSystem/components/navigation/TextLink";
 
-type DemoProps = {
+type SampleProps = {
   name: string;
   codebaseHref?: string;
   deploymentHref?: string;
@@ -11,13 +11,13 @@ type DemoProps = {
   children: ReactNode;
 };
 
-const Demo = ({
+const Sample = ({
   name,
   codebaseHref,
   deploymentHref,
   previewSrc,
   children,
-}: DemoProps) => {
+}: SampleProps) => {
   return (
     <Card>
       <header>
@@ -59,4 +59,4 @@ const Demo = ({
   );
 };
 
-export default Demo;
+export default Sample;

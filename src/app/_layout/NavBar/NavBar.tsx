@@ -85,8 +85,12 @@ const NavBar = () => {
               </header>
             </TextLink>
             <ul className="mt-5 flex justify-center">
-              <li className={pathname === "/demos" ? currentPathClassName : ""}>
-                <TextLink href="/demos" className="p-2">
+              <li
+                className={
+                  pathname === "/codeSamples" ? currentPathClassName : ""
+                }
+              >
+                <TextLink href="/codeSamples" className="p-2">
                   Code samples
                 </TextLink>
               </li>
