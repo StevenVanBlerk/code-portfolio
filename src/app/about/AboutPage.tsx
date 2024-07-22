@@ -1,5 +1,12 @@
+import { LoadingSpinner } from "@/designSystem";
+
 const AboutPage = () => {
-  return <div>Stuff about me</div>;
+  return (
+    <div className="mx-auto w-fit">
+      Stuff about me
+      <LoadingSpinner width={300} />
+    </div>
+  );
   /**
    * people person soft skills
    * supporting neurodiversity

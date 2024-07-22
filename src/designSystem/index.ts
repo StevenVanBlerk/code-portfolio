@@ -1,8 +1,9 @@
 //components
 import TextButton from "./components/inputs/TextButton";
 import Card from "./components/surfaces/Card";
+import LoadingSpinner from "./components/dataDisplay/LoadingSpinner";
 
-export { TextButton, Card };
+export { TextButton, Card, LoadingSpinner };
 
 // utilities
 import {
@@ -12,8 +13,3 @@ import {
 } from "./utilities/randomGenerators";
 
 export { randomArrayEntry, randomArrayStep, randomInteger };
-
-// constants
-import colors from "./constants/colors";
-
-export { colors };
