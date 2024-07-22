@@ -10,7 +10,7 @@ const ScrollProgressSidebar = ({
   const [ref0, ref1, ref2, ref3, ref4, ref5] = extendedRefs;
 
   return (
-    <nav className="fixed top-1/2 w-full -translate-y-1/2">
+    <nav className="fixed top-1/2 w-fit -translate-y-1/2">
       <ul className="grid w-fit gap-3">
         <Item
           extendedRef={ref0}
