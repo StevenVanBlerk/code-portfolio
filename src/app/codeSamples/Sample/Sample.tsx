@@ -56,7 +56,12 @@ const Sample = ({
         )}
 
         {deploymentHref && hasIFrame && (
-          <IFrame src={deploymentHref} title={name} className="h-[350px]" />
+          <IFrame
+            src={deploymentHref}
+            title={name}
+            loading="lazy"
+            className="h-[350px]"
+          />
         )}
       </div>
     </Card>
