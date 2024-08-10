@@ -50,20 +50,6 @@ const CodeSamplesPage = () => {
 
           <li ref={ref2.ref}>
             <Sample
-              name="Cypress"
-              deploymentHref="https://lodgify-technical-assignment.vercel.app/"
-              codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
-              previewSrc="/images/codeSamples/emotion wheel.png"
-            >
-              <p>
-                This is a demonstration of unit testing in Cypress. This is
-                integrated into the above to-do list project.
-              </p>
-            </Sample>
-          </li>
-
-          <li ref={ref3.ref}>
-            <Sample
               name="Storybook"
               deploymentHref="https://lodgify-technical-assignment.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
@@ -72,6 +58,20 @@ const CodeSamplesPage = () => {
               <p>
                 This is a demonstration of storybook documentation. This
                 includes the components used to build this portfolio site.
+              </p>
+            </Sample>
+          </li>
+
+          <li ref={ref3.ref}>
+            <Sample
+              name="Cypress"
+              deploymentHref="https://lodgify-technical-assignment.vercel.app/"
+              codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
+              previewSrc="/images/codeSamples/emotion wheel.png"
+            >
+              <p>
+                This is a demonstration of unit testing in Cypress. This is
+                integrated into the above to-do list project.
               </p>
             </Sample>
           </li>

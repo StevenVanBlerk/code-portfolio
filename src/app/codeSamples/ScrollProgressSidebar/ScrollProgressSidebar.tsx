@@ -24,12 +24,12 @@ const ScrollProgressSidebar = ({
         />
         <Item
           extendedRef={ref2}
-          label="Cypress"
+          label="Storybook"
           itemCount={extendedRefs.length}
         />
         <Item
           extendedRef={ref3}
-          label="Storybook"
+          label="Cypress"
           itemCount={extendedRefs.length}
         />
         <Item
