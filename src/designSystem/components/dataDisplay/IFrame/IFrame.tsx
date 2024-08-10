@@ -25,7 +25,7 @@ const IFrame = ({
       </TextLink>
 
       <iframe
-        className={`h-full w-full rounded-md rounded-t-none border border-light-charcoal ${className}`}
+        className={`w-full rounded-md rounded-t-none border border-light-charcoal ${className}`}
         src={src}
         title={title}
         {...iFrameProps}
