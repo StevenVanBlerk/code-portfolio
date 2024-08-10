@@ -48,6 +48,7 @@ const NavBar = () => {
         },
       );
     } else {
+      controls.set({ y: 0 }); // resetting y before stopping animation
       controls.stop();
     }
   }, [isExpanded]);
@@ -74,14 +75,14 @@ const NavBar = () => {
               opacity: 100,
             },
             closed: {
-              marginTop: "-250px",
+              marginTop: "-260px",
               opacity: 0,
             },
           }}
         >
           <nav>
             <TextLink
-              className="mx-auto"
+              className="mx-auto mt-4"
               href="/"
               onClick={() => setDesiredPath("/")}
             >
