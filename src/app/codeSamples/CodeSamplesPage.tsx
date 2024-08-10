@@ -20,7 +20,6 @@ const CodeSamplesPage = () => {
               name="Emotion wheel"
               deploymentHref="https://emotion-wheel.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/emotion-wheel"
-              previewSrc="/images/codeSamples/emotion wheel.png"
               tags={["React", "NextJS", "TypeScript", "Tailwind CSS"]}
             >
               <p>
@@ -35,9 +34,8 @@ const CodeSamplesPage = () => {
           <li ref={ref1.ref}>
             <Sample
               name="To-do list"
-              deploymentHref="https://lodgify-technical-assignment.vercel.app/"
-              codebaseHref="https://github.com/StevenVanBlerk/emotion-wheel"
-              previewSrc="/images/codeSamples/emotion wheel.png"
+              deploymentHref="https://static-todo-list-stevenvanblerk.vercel.app/"
+              codebaseHref="https://github.com/StevenVanBlerk/static-todo-list"
               tags={["React", "NextJS", "JavaScript", "Styled components"]}
             >
               <p>
@@ -53,7 +51,6 @@ const CodeSamplesPage = () => {
               name="Storybook"
               deploymentHref="https://lodgify-technical-assignment.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
-              previewSrc="/images/codeSamples/emotion wheel.png"
             >
               <p>
                 This is a demonstration of storybook documentation. This
@@ -67,7 +64,6 @@ const CodeSamplesPage = () => {
               name="Cypress"
               deploymentHref="https://lodgify-technical-assignment.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
-              previewSrc="/images/codeSamples/emotion wheel.png"
             >
               <p>
                 This is a demonstration of unit testing in Cypress. This is
@@ -81,7 +77,7 @@ const CodeSamplesPage = () => {
               name="This portfolio"
               deploymentHref="https://emotion-wheel.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/emotion-wheel"
-              previewSrc="/images/codeSamples/emotion wheel.png"
+              hasIFrame={false}
               tags={[
                 "React",
                 "NextJS",
@@ -99,7 +95,6 @@ const CodeSamplesPage = () => {
               name="My previous portfolio"
               deploymentHref="https://personal-portfolio-snowy.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/personal-portfolio"
-              previewSrc="/images/codeSamples/emotion wheel.png"
               tags={[
                 "React",
                 "NextJS",

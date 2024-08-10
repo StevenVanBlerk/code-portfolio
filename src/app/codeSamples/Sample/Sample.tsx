@@ -1,14 +1,13 @@
 import { ReactNode } from "react";
-import NextImage from "next/image";
-import { Card, Chip } from "@/designSystem";
+import { Card, Chip, IFrame } from "@/designSystem";
 import TextLink from "@/designSystem/components/navigation/TextLink";
 
 type SampleProps = {
   name: string;
   codebaseHref?: string;
   deploymentHref?: string;
-  previewSrc?: string;
   tags?: string[];
+  hasIFrame?: boolean;
   children: ReactNode;
 };
 
@@ -16,12 +15,12 @@ const Sample = ({
   name,
   codebaseHref,
   deploymentHref,
-  previewSrc,
+  hasIFrame = true,
   tags = [],
   children,
 }: SampleProps) => {
   return (
-    <Card>
+    <Card className="h-full w-full">
       <div className="grid grid-cols-1 gap-4">
         <div>
           <header>
@@ -56,17 +55,8 @@ const Sample = ({
           </ul>
         )}
 
-        {previewSrc && deploymentHref && (
-          <TextLink href={deploymentHref} openInNewTab>
-            <NextImage
-              src={previewSrc}
-              alt={`${name} preview`}
-              width={0}
-              height={0}
-              sizes="100%"
-              className="h-auto w-full rounded-md"
-            />
-          </TextLink>
+        {deploymentHref && hasIFrame && (
+          <IFrame src={deploymentHref} title={name} className="h-[350px]" />
         )}
       </div>
     </Card>
