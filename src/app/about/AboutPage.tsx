@@ -1,16 +1,17 @@
-import { LoadingSpinner } from "@/designSystem";
-
 const AboutPage = () => {
   return (
     <div className="mx-auto w-fit">
-      Stuff about me
-      <LoadingSpinner width={300} />
+      Hi hello! I am a dev blessing the rains down in South Africa.
+      <br />
+      <br />
+      At any given moment you might find me:
+      <ul className="list-disc px-4">
+        <li>Saving customers from the deprioritisation of UX.</li>
+        <li>Looking out for the wellbeing of my peers.</li>
+      </ul>
     </div>
   );
   /**
-   * people person soft skills
-   * supporting neurodiversity
-   * Countering imposter syndrome
    * Collaboration with designers
    * Collaboration with devs
    *

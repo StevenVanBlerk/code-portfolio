@@ -13,7 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body className={`${raleway.variable}`}>
         <main>
-          <MorphinQuadsAnimation />
+          {/* <MorphinQuadsAnimation /> */}
           <div className="relative z-10">
             <NavBar />
             <section className="mt-6">{children}</section>

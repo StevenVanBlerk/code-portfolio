@@ -4,6 +4,7 @@ import { ExtendedRef } from "./types";
 type ScrollProgressSidebarProps = { extendedRefs: ExtendedRef[] };
 
 // TO-DO: make sidebar component generic and move it to DesignSystem
+// TO-DO: create provider and consumer / redux slice for handling extendedRefs
 const ScrollProgressSidebar = ({
   extendedRefs,
 }: ScrollProgressSidebarProps) => {
