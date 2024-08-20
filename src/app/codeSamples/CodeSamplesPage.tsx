@@ -49,8 +49,8 @@ const CodeSamplesPage = () => {
           <li ref={ref2.ref}>
             <Sample
               name="Storybook"
-              deploymentHref="https://lodgify-technical-assignment.vercel.app/"
-              codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
+              deploymentHref="https://66c514322ea1d5858ff5d9d2-htxgmnpyqg.chromatic.com/?path=/docs/configure-your-project--docs"
+              codebaseHref="https://github.com/StevenVanBlerk/code-portfolio/tree/main/src/designSystem"
             >
               <p>
                 This is a demonstration of storybook documentation. This
