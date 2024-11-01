@@ -84,8 +84,8 @@ const CodeSamplesPage = () => {
                 Penpot is a popular open-source design software, and an
                 alternative to tools like Figma and Adobe XD. I am familiar with
                 the other common tools but I prefer the performance and
-                usability of Penpot. The best part is that I don't have to fund
-                our Adobe overlords.
+                usability of Penpot. The best part is that I don&apos;t have to
+                fund our Adobe overlords.
               </p>
             </Sample>
           </li>
