@@ -10,7 +10,7 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        raleway: ["var(--font-raleway)"], //minimalist has incorrect unicode values. use something else and delete Minimalist
+        raleway: ["var(--font-raleway)"], //"minimalist" font has incorrect unicode values. use something else and delete Minimalist
       },
       colors: {
         "dark-charcoal": "#151515",

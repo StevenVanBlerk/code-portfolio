@@ -4,9 +4,11 @@ import Sample from "./Sample";
 import ScrollProgressSidebar from "./ScrollProgressSidebar";
 import { buildExtendedRefs } from "./ScrollProgressSidebar/utils";
 
+// Long term TO-DO: Create an API intensive code demo. Ideally using things like GraphQL, React Query, and/or Redux API.
+
 const CodeSamplesPage = () => {
-  const extendedRefs = buildExtendedRefs(6);
-  const [ref0, ref1, ref2, ref3, ref4, ref5] = extendedRefs;
+  const extendedRefs = buildExtendedRefs(7);
+  const [ref0, ref1, ref2, ref3, ref4, ref5, ref6] = extendedRefs;
 
   return (
     <div className="grid grid-cols-[1fr_auto_1fr]">
@@ -62,7 +64,7 @@ const CodeSamplesPage = () => {
           <li ref={ref3.ref}>
             <Sample
               name="Cypress"
-              deploymentHref="https://lodgify-technical-assignment.vercel.app/"
+              deploymentHref="https://www.youtube.com/watch?v=0ysrRTAMCIU"
               codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
             >
               <p>
@@ -73,6 +75,22 @@ const CodeSamplesPage = () => {
           </li>
 
           <li ref={ref4.ref}>
+            <Sample
+              name="Penpot"
+              deploymentHref="https://www.youtube.com/watch?v=0ysrRTAMCIU"
+              codebaseHref="https://github.com/StevenVanBlerk/lodgify-technical-assignment"
+            >
+              <p>
+                Penpot is a popular open-source design software, and an
+                alternative to tools like Figma and Adobe XD. I am familiar with
+                the other common tools but I prefer the performance and
+                usability of Penpot. The best part is that I don't have to fund
+                our Adobe overlords.
+              </p>
+            </Sample>
+          </li>
+
+          <li ref={ref5.ref}>
             <Sample
               name="This portfolio"
               deploymentHref="https://emotion-wheel.vercel.app/"
@@ -90,9 +108,9 @@ const CodeSamplesPage = () => {
             </Sample>
           </li>
 
-          <li ref={ref5.ref}>
+          <li ref={ref6.ref}>
             <Sample
-              name="My previous portfolio"
+              name="The previous portfolio"
               deploymentHref="https://personal-portfolio-snowy.vercel.app/"
               codebaseHref="https://github.com/StevenVanBlerk/personal-portfolio"
               tags={[
@@ -105,7 +123,7 @@ const CodeSamplesPage = () => {
             >
               <p>
                 This is the previous iteration of my portfolio. It is designed
-                to read like a CV but with digital flare. It is built with
+                to read like a CV with some digital flare. It is built with
                 NextJS, Styled components, and Framer motion
               </p>
             </Sample>

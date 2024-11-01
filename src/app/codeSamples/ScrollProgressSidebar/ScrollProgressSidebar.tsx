@@ -8,7 +8,7 @@ type ScrollProgressSidebarProps = { extendedRefs: ExtendedRef[] };
 const ScrollProgressSidebar = ({
   extendedRefs,
 }: ScrollProgressSidebarProps) => {
-  const [ref0, ref1, ref2, ref3, ref4, ref5] = extendedRefs;
+  const [ref0, ref1, ref2, ref3, ref4, ref5, ref6] = extendedRefs;
 
   return (
     <nav className="fixed top-1/2 w-fit -translate-y-1/2">
@@ -35,12 +35,17 @@ const ScrollProgressSidebar = ({
         />
         <Item
           extendedRef={ref4}
-          label="This portfolio"
+          label="Penpot"
           itemCount={extendedRefs.length}
         />
         <Item
           extendedRef={ref5}
-          label="My previous portfolio"
+          label="This portfolio"
+          itemCount={extendedRefs.length}
+        />
+        <Item
+          extendedRef={ref6}
+          label="The previous portfolio"
           itemCount={extendedRefs.length}
         />
       </ul>
