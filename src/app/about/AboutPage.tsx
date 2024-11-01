@@ -1,7 +1,7 @@
 const AboutPage = () => {
   return (
     <div className="mx-auto w-fit">
-      Hi hello! I am a dev blessing the rains down in South Africa.
+      Hi hello! I am a frontend dev working out of Cape Town, South Africa.
       <br />
       <br />
       At any given moment you might find me:
