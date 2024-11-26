@@ -21,8 +21,6 @@ const NavBar = () => {
   const currentPathClassName = "underline";
 
   useEffect(() => {
-    // setDesiredPath(pathname);
-
     if (!isOnHomePage) {
       setIsExpanded(true);
     }
@@ -107,19 +105,7 @@ const NavBar = () => {
                   Code samples
                 </TextLink>
               </li>
-              <li
-                className={
-                  desiredPath === "/creativeCoding" ? currentPathClassName : ""
-                }
-              >
-                <TextLink
-                  href="/creativeCoding"
-                  className="p-2"
-                  onClick={() => setDesiredPath("/creativeCoding")}
-                >
-                  Creative coding
-                </TextLink>
-              </li>
+
               <li
                 className={desiredPath === "/about" ? currentPathClassName : ""}
               >
