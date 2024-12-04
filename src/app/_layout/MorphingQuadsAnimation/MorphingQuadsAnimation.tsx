@@ -1,15 +1,9 @@
 "use client";
 import useWindowDimensions from "@/designSystem/utilities/useWindowDimensions";
 import MorphingQuads from "@/bespokeSystem/components/animations/MorphingQuads";
-import { useEffect } from "react";
 
 const MorphingQuadsAnimation = () => {
-  const { windowDimensions, invalidateWindowDimensions } =
-    useWindowDimensions();
-
-  useEffect(() => {
-    invalidateWindowDimensions();
-  }, []);
+  const { windowDimensions } = useWindowDimensions();
 
   if (!windowDimensions.height || !windowDimensions.width) return;
 

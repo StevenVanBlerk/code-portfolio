@@ -9,9 +9,9 @@ const useWindowDimensions = () => {
     height: number | null;
   }>(initialDimensions);
 
-  const getWindowDimensions = () => {
-    return { width: window.innerWidth, height: window.innerHeight };
-  };
+  useEffect(() => {
+    invalidateWindowDimensions();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,16 +21,22 @@ const useWindowDimensions = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const invalidateWindowDimensions = () => {
+    setWindowDimensions(getWindowDimensions());
+  };
+
+  const getWindowDimensions = () => {
+    return { width: window.innerWidth, height: window.innerHeight };
+  };
+
+  // returning placeholder values until hook is fully initialised
   const hasWindow = typeof window !== "undefined";
-  if (!hasWindow)
+  if (!hasWindow) {
     return {
       windowDimensions: initialDimensions,
       invalidateWindowDimensions: () => {},
     };
-
-  const invalidateWindowDimensions = () => {
-    setWindowDimensions(getWindowDimensions());
-  };
+  }
 
   return { windowDimensions, invalidateWindowDimensions };
 };
