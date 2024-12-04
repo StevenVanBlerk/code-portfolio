@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
 import NodeA from "./NodeA";
+import NodeB from "./NodeB";
 
 export type OrbitingNode = {
   nodeType: "A" | "B" | "C" | "D" | "E";
@@ -49,6 +50,12 @@ const OrbitingNode = ({
       <g style={{ transform: `translateX(${orbitalRadius}px)` }}>
         {nodeType === "A" ? (
           <NodeA
+            nodeOuterRadius={nodeOuterRadius}
+            strokeWidths={strokeWidths}
+            color={color}
+          />
+        ) : nodeType === "B" ? (
+          <NodeB
             nodeOuterRadius={nodeOuterRadius}
             strokeWidths={strokeWidths}
             color={color}
