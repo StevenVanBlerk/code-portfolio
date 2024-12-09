@@ -23,10 +23,16 @@ const useGrisHandler = (): GrisHandler => {
       backgroundSquares: [],
     };
 
-  const canvasWidth =
+  const maxCanvasWidth =
+    windowDimensions.width > windowDimensions.height
+      ? 2.5 * windowDimensions.height
+      : 2.5 * windowDimensions.height;
+
+  let canvasWidth =
     windowDimensions.width > windowDimensions.height
       ? windowDimensions.width
       : windowDimensions.height;
+  if (canvasWidth > maxCanvasWidth) canvasWidth = maxCanvasWidth;
 
   const backgroundSquares = buildBackgroundSquares(canvasWidth);
   const backgroundCircles = buildBackgroundCircles(canvasWidth);
@@ -36,6 +42,7 @@ const useGrisHandler = (): GrisHandler => {
     canvasWidth,
     backgroundCircles,
     backgroundSquares,
+    windowDimensions,
   };
   return grisAnimationValues;
 };

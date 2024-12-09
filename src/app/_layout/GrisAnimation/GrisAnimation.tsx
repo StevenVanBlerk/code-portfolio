@@ -2,6 +2,7 @@
 
 import Circle from "./Circle";
 import OrbitingNode from "./OrbitingNode/OrbitingNode";
+import Square from "./Square";
 import useGrisHandler from "./useGrisHandler";
 
 const GrisAnimation = () => {
@@ -13,35 +14,29 @@ const GrisAnimation = () => {
     <svg
       width={canvasWidth}
       height={canvasWidth}
+      viewBox={`0 0 ${canvasWidth} ${canvasWidth}`}
       className="pointer-events-none block"
     >
       {backgroundSquares.map(
-        ({ x, y, width, height, strokeWidth, transform }, index) => {
-          const dotWidth = strokeWidth;
-          const distanceBetweenDots = strokeWidth * 4;
-          const strokeDashArray = `${dotWidth},${distanceBetweenDots}`;
-
-          return (
-            <rect
-              key={index}
-              x={x - width / 2}
-              y={y - height / 2}
-              width={width}
-              height={height}
-              strokeWidth={strokeWidth}
-              transform={transform}
-              strokeDasharray={strokeDashArray}
-              stroke="#fff"
-              fill="transparent"
-            />
-          );
-        },
+        ({ width, height, strokeWidth, isRotated }, index) => (
+          <Square
+            key={`${index}-${canvasWidth}`} // including canvasWidth ensures a reset of position calculations when canvasWidth changes
+            canvasWidth={canvasWidth}
+            width={width}
+            height={height}
+            strokeWidth={strokeWidth}
+            isRotated={isRotated}
+          />
+        ),
       )}
+
       {backgroundCircles.map((backgroundCircle, index) => {
         const { orbitingNode } = backgroundCircle;
 
         return (
-          <g key={index}>
+          <g
+            key={`${index}-${canvasWidth}`} // including canvasWidth ensures a reset of position calculations when canvasWidth changes
+          >
             <Circle
               radius={backgroundCircle.diameter / 2}
               strokeWidth={backgroundCircle.strokeWidth}

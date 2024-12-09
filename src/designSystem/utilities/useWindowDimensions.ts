@@ -9,21 +9,22 @@ const useWindowDimensions = () => {
     height: number | null;
   }>(initialDimensions);
 
+  const invalidateWindowDimensions = () => {
+    setWindowDimensions(getWindowDimensions());
+  };
+
   useEffect(() => {
     invalidateWindowDimensions();
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowDimensions(getWindowDimensions());
-    };
-    window.addEventListener("resize", debounce(handleResize, 250)); //debouncing to delay rerender till the user has stopped resizing
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const invalidateWindowDimensions = () => {
-    setWindowDimensions(getWindowDimensions());
-  };
+    window.addEventListener(
+      "resize",
+      debounce(invalidateWindowDimensions, 250),
+    ); //debouncing to delay rerender till the user has stopped resizing
+    return () =>
+      window.removeEventListener("resize", invalidateWindowDimensions);
+  }, [invalidateWindowDimensions]);
 
   const getWindowDimensions = () => {
     return { width: window.innerWidth, height: window.innerHeight };
