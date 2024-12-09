@@ -16,11 +16,12 @@ const GrisAnimation = () => {
       height={canvasWidth}
       viewBox={`0 0 ${canvasWidth} ${canvasWidth}`}
       className="pointer-events-none block"
+      key={canvasWidth} // canvasWidth key ensures a reset of position calculations when canvasWidth changes
     >
       {backgroundSquares.map(
         ({ width, height, strokeWidth, isRotated }, index) => (
           <Square
-            key={`${index}-${canvasWidth}`} // including canvasWidth ensures a reset of position calculations when canvasWidth changes
+            key={index}
             canvasWidth={canvasWidth}
             width={width}
             height={height}
@@ -34,9 +35,7 @@ const GrisAnimation = () => {
         const { orbitingNode } = backgroundCircle;
 
         return (
-          <g
-            key={`${index}-${canvasWidth}`} // including canvasWidth ensures a reset of position calculations when canvasWidth changes
-          >
+          <g key={index}>
             <Circle
               radius={backgroundCircle.diameter / 2}
               strokeWidth={backgroundCircle.strokeWidth}
@@ -52,7 +51,6 @@ const GrisAnimation = () => {
                 orbitalPeriod={orbitingNode.orbitalPeriod}
                 strokeWidths={orbitingNode.strokeWidths}
                 nodeRotationalPeriod={orbitingNode.nodeRotationalPeriod}
-                nodeRotationalDirection={orbitingNode.nodeRotationalDirection}
               />
             )}
           </g>
@@ -63,3 +61,8 @@ const GrisAnimation = () => {
 };
 
 export default GrisAnimation;
+
+/** TO-DO:
+ * validate all rotation directions
+ * add blur effect to OrbitingNode nuclei
+ */

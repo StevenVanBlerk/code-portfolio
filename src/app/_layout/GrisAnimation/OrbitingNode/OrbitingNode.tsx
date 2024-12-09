@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
 import NodeA from "./NodeA";
 import NodeB from "./NodeB";
+import NodeC from "./NodeC";
 
 export type OrbitingNode = {
   nodeType: "A" | "B" | "C" | "D" | "E";
@@ -10,7 +11,6 @@ export type OrbitingNode = {
   orbitalPeriod: number;
   strokeWidths: StrokeWidths;
   nodeRotationalPeriod?: number;
-  nodeRotationalDirection?: "clockwise" | "counter-clockwise";
   color?: string;
 };
 
@@ -20,8 +20,7 @@ const OrbitingNode = ({
   orbitalRadius,
   orbitalPeriod,
   strokeWidths,
-  nodeRotationalPeriod,
-  nodeRotationalDirection,
+  nodeRotationalPeriod = 0,
   color = "#fff",
 }: OrbitingNode) => {
   return (
@@ -59,6 +58,14 @@ const OrbitingNode = ({
             nodeOuterRadius={nodeOuterRadius}
             strokeWidths={strokeWidths}
             color={color}
+          />
+        ) : nodeType === "C" ? (
+          <NodeC
+            orbitalRadius={orbitalRadius}
+            nodeOuterRadius={nodeOuterRadius}
+            strokeWidths={strokeWidths}
+            color={color}
+            nodeRotationalPeriod={nodeRotationalPeriod}
           />
         ) : null}
       </g>

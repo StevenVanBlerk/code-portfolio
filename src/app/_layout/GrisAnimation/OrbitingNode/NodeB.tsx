@@ -13,7 +13,7 @@ const NodeB = ({
 }: NodeBProps) => {
   return (
     <g>
-      {/* outermost circle */}
+      {/* outermost ring */}
       <circle
         r={nodeOuterRadius}
         strokeWidth={strokeWidths.xxs}
@@ -22,6 +22,7 @@ const NodeB = ({
         cx="50%"
         cy="50%"
       />
+      {/* inner ring */}
       <circle
         r={nodeOuterRadius / 1.3}
         strokeWidth={strokeWidths.xxs}
@@ -30,7 +31,7 @@ const NodeB = ({
         cx="50%"
         cy="50%"
       />
-      {/* innermost circle */}
+      {/* inner nucleus */}
       <circle
         r={nodeOuterRadius / 4}
         strokeWidth={strokeWidths.xs}
