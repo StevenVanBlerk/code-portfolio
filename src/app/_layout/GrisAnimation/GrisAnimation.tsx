@@ -46,6 +46,7 @@ const GrisAnimation = () => {
             {orbitingNode && (
               <OrbitingNode
                 nodeType={orbitingNode.nodeType}
+                initialOrbitPosition={orbitingNode.initialOrbitPosition}
                 nodeOuterRadius={orbitingNode.nodeOuterRadius}
                 orbitalRadius={backgroundCircle.diameter / 2}
                 orbitalPeriod={orbitingNode.orbitalPeriod}

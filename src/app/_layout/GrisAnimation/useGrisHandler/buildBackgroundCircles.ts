@@ -72,6 +72,7 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
       diameter: 23.1 * onePercentOfCanvas,
       orbitingNode: {
         nodeType: "A",
+        initialOrbitPosition: 20,
         nodeOuterRadius: 0.9 * onePercentOfCanvas,
         orbitalPeriod: 80,
         strokeWidths,
@@ -82,6 +83,7 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
       diameter: 32.5 * onePercentOfCanvas,
       orbitingNode: {
         nodeType: "B",
+        initialOrbitPosition: -40,
         nodeOuterRadius: 0.54 * onePercentOfCanvas,
         orbitalPeriod: 40,
         strokeWidths,
@@ -92,6 +94,7 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
       diameter: 37.9 * onePercentOfCanvas,
       orbitingNode: {
         nodeType: "CURSOR",
+        initialOrbitPosition: 180,
         nodeOuterRadius: 2 * onePercentOfCanvas,
         orbitalPeriod: 0,
         strokeWidths,
@@ -102,9 +105,10 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
       diameter: 68 * onePercentOfCanvas,
       orbitingNode: {
         nodeType: "C",
+        initialOrbitPosition: 200,
         nodeOuterRadius: 2 * onePercentOfCanvas,
         orbitalPeriod: 50,
-        nodeRotationalPeriod: 5,
+        nodeRotationalPeriod: 16,
         strokeWidths,
       },
     },
@@ -122,10 +126,25 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
     {
       strokeWidth: strokeWidths.xl,
       diameter: 90 * onePercentOfCanvas,
+      orbitingNode: {
+        nodeType: "D",
+        initialOrbitPosition: 240,
+        nodeOuterRadius: 1.5 * onePercentOfCanvas,
+        orbitalPeriod: 150,
+        strokeWidths,
+      },
     },
     {
       strokeWidth: strokeWidths.sm,
       diameter: 94.4 * onePercentOfCanvas,
+      orbitingNode: {
+        nodeType: "E",
+        initialOrbitPosition: 130,
+        nodeOuterRadius: 1.7 * onePercentOfCanvas,
+        orbitalPeriod: 125,
+        nodeRotationalPeriod: 8,
+        strokeWidths,
+      },
     },
   ];
 };

@@ -4,6 +4,8 @@ import NodeA from "./NodeA";
 import NodeB from "./NodeB";
 import NodeC from "./NodeC";
 import NodeCursor from "./NodeCursor";
+import NodeD from "./NodeD";
+import NodeE from "./NodeE";
 
 export type OrbitingNode = {
   nodeType: "CURSOR" | "A" | "B" | "C" | "D" | "E";
@@ -12,6 +14,7 @@ export type OrbitingNode = {
   orbitalPeriod: number;
   strokeWidths: StrokeWidths;
   nodeRotationalPeriod?: number;
+  initialOrbitPosition: number;
   color?: string;
 };
 
@@ -22,15 +25,16 @@ const OrbitingNode = ({
   orbitalPeriod,
   strokeWidths,
   nodeRotationalPeriod = 0,
+  initialOrbitPosition = 0,
   color = "#fff",
 }: OrbitingNode) => {
   return (
     <motion.g
       initial={{
-        rotate: 0,
+        rotate: initialOrbitPosition,
       }}
       animate={{
-        rotate: 360,
+        rotate: initialOrbitPosition + 360,
       }}
       transition={{
         repeat: Infinity,
@@ -68,6 +72,20 @@ const OrbitingNode = ({
           />
         ) : nodeType === "C" ? (
           <NodeC
+            orbitalRadius={orbitalRadius}
+            nodeOuterRadius={nodeOuterRadius}
+            strokeWidths={strokeWidths}
+            color={color}
+            nodeRotationalPeriod={nodeRotationalPeriod}
+          />
+        ) : nodeType === "D" ? (
+          <NodeD
+            nodeOuterRadius={nodeOuterRadius}
+            strokeWidths={strokeWidths}
+            color={color}
+          />
+        ) : nodeType === "E" ? (
+          <NodeE
             orbitalRadius={orbitalRadius}
             nodeOuterRadius={nodeOuterRadius}
             strokeWidths={strokeWidths}

@@ -1,17 +1,17 @@
 import Circle from "../Circle";
 import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
 
-type NodeCursorProps = {
+type NodeDProps = {
   nodeOuterRadius: number;
   strokeWidths: StrokeWidths;
   color?: string;
 };
 
-const NodeCursor = ({
+const NodeD = ({
   nodeOuterRadius,
   strokeWidths,
   color = "#fff",
-}: NodeCursorProps) => {
+}: NodeDProps) => {
   return (
     <g>
       {/* outer dotted ring */}
@@ -24,16 +24,8 @@ const NodeCursor = ({
 
       {/* inner rings */}
       <circle
-        r={0.9 * nodeOuterRadius}
-        strokeWidth={strokeWidths.xs}
-        stroke={color}
-        fill="transparent"
-        cx="50%"
-        cy="50%"
-      />
-      <circle
-        r={0.8 * nodeOuterRadius}
-        strokeWidth={strokeWidths.xs}
+        r={0.85 * nodeOuterRadius}
+        strokeWidth={strokeWidths.sm}
         stroke={color}
         fill="transparent"
         cx="50%"
@@ -41,7 +33,7 @@ const NodeCursor = ({
       />
       <circle
         r={0.7 * nodeOuterRadius}
-        strokeWidth={strokeWidths.xs}
+        strokeWidth={strokeWidths.sm}
         stroke={color}
         fill="transparent"
         cx="50%"
@@ -49,7 +41,7 @@ const NodeCursor = ({
       />
       {/* nucleus */}
       <circle
-        r={0.28 * nodeOuterRadius}
+        r={0.2 * nodeOuterRadius}
         strokeWidth={strokeWidths.xs}
         stroke={color}
         fill={color}
@@ -60,4 +52,4 @@ const NodeCursor = ({
   );
 };
 
-export default NodeCursor;
+export default NodeD;

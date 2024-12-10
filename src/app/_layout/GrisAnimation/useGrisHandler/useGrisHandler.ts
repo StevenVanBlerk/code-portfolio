@@ -23,15 +23,15 @@ const useGrisHandler = (): GrisHandler => {
       backgroundSquares: [],
     };
 
-  const maxCanvasWidth =
-    windowDimensions.width > windowDimensions.height
-      ? 2.5 * windowDimensions.height
-      : 2.5 * windowDimensions.height;
+  const isWindowLandscape = windowDimensions.width > windowDimensions.height;
 
-  let canvasWidth =
-    windowDimensions.width > windowDimensions.height
-      ? windowDimensions.width
-      : windowDimensions.height;
+  const maxCanvasWidth = isWindowLandscape
+    ? 2.5 * windowDimensions.height
+    : 2.5 * windowDimensions.width;
+
+  let canvasWidth = isWindowLandscape
+    ? windowDimensions.width
+    : windowDimensions.height;
   if (canvasWidth > maxCanvasWidth) canvasWidth = maxCanvasWidth;
 
   const backgroundSquares = buildBackgroundSquares(canvasWidth);
