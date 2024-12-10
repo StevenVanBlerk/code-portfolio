@@ -24,7 +24,7 @@ const NodeB = ({
       />
       {/* inner ring */}
       <circle
-        r={nodeOuterRadius / 1.3}
+        r={0.77 * nodeOuterRadius}
         strokeWidth={strokeWidths.xxs}
         stroke={color}
         fill="transparent"
@@ -33,7 +33,7 @@ const NodeB = ({
       />
       {/* inner nucleus */}
       <circle
-        r={nodeOuterRadius / 4}
+        r={0.25 * nodeOuterRadius}
         strokeWidth={strokeWidths.xs}
         stroke={color}
         fill={color}

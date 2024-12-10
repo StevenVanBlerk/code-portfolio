@@ -90,6 +90,12 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
     {
       strokeWidth: strokeWidths.xl,
       diameter: 37.9 * onePercentOfCanvas,
+      orbitingNode: {
+        nodeType: "CURSOR",
+        nodeOuterRadius: 2 * onePercentOfCanvas,
+        orbitalPeriod: 0,
+        strokeWidths,
+      },
     },
     {
       strokeWidth: strokeWidths.lg,

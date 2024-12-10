@@ -13,7 +13,7 @@ const NodeA = ({
 }: NodeAProps) => {
   return (
     <g>
-      {/* outer circle */}
+      {/* outer ring */}
       <circle
         r={nodeOuterRadius}
         strokeWidth={strokeWidths.sm}
@@ -22,9 +22,9 @@ const NodeA = ({
         cx="50%"
         cy="50%"
       />
-      {/* inner circle */}
+      {/* inner nucleus */}
       <circle
-        r={nodeOuterRadius / 2.3}
+        r={0.435 * nodeOuterRadius}
         strokeWidth={strokeWidths.xs}
         stroke={color}
         fill={color}

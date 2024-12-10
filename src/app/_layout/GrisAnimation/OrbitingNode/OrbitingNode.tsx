@@ -3,9 +3,10 @@ import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
 import NodeA from "./NodeA";
 import NodeB from "./NodeB";
 import NodeC from "./NodeC";
+import NodeCursor from "./NodeCursor";
 
 export type OrbitingNode = {
-  nodeType: "A" | "B" | "C" | "D" | "E";
+  nodeType: "CURSOR" | "A" | "B" | "C" | "D" | "E";
   nodeOuterRadius: number;
   orbitalRadius: number;
   orbitalPeriod: number;
@@ -47,7 +48,13 @@ const OrbitingNode = ({
         cy="50%"
       />
       <g style={{ transform: `translateX(${orbitalRadius}px)` }}>
-        {nodeType === "A" ? (
+        {nodeType === "CURSOR" ? (
+          <NodeCursor
+            nodeOuterRadius={nodeOuterRadius}
+            strokeWidths={strokeWidths}
+            color={color}
+          />
+        ) : nodeType === "A" ? (
           <NodeA
             nodeOuterRadius={nodeOuterRadius}
             strokeWidths={strokeWidths}
