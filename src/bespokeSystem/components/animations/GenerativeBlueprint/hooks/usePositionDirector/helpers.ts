@@ -2,7 +2,7 @@ import {
   randomArrayEntry,
   randomArrayStep,
   randomInteger,
-} from "@/designSystem";
+} from "src/designSystem";
 import {
   InitialiseGridNodesParams,
   InitialiseNodeConnectionsParams,

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { Card, Chip, IFrame } from "@/designSystem";
-import TextLink from "@/designSystem/components/navigation/TextLink";
+import { Card, Chip, IFrame } from "src/designSystem";
+import TextLink from "src/designSystem/components/navigation/TextLink";
 
 type SampleProps = {
   name: string;

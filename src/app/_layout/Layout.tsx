@@ -1,5 +1,8 @@
+"use client";
+
 import GrisAnimation from "./GrisAnimation";
-import NavBar from "./NavBar";
+import useUniversalLayoutHandler from "./helpers/useUniversalLayoutHandler";
+import NavMenu from "./NavMenu";
 import { Raleway } from "next/font/google";
 
 // Adding google fonts to project
@@ -8,23 +11,33 @@ const raleway = Raleway({
   variable: "--font-raleway",
 });
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  const universalLayoutHandler = useUniversalLayoutHandler();
+  const { isLoading, canvasWidth, backgroundCircles, backgroundSquares } =
+    universalLayoutHandler;
+
   return (
     <html lang="en">
-      <body className={`${raleway.variable}`}>
+      <body className={raleway.variable}>
         <main>
-          {/* <MorphinQuadsAnimation /> */}
           <div className="fixed inset-0">
             <div className="absolute inset-0 flex items-center justify-center">
-              <GrisAnimation />
+              <GrisAnimation
+                isLoading={isLoading}
+                canvasWidth={canvasWidth}
+                backgroundCircles={backgroundCircles}
+                backgroundSquares={backgroundSquares}
+              />
             </div>
           </div>
           <div className="relative z-10">
-            {/* <NavBar /> */}
-            {/* <section className="mt-6">{children}</section> */}
+            <NavMenu />
+            <section className="mt-6">{children}</section>
           </div>
         </main>
       </body>
     </html>
   );
 };
+
+export default Layout;

@@ -1,4 +1,4 @@
-import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
+import { StrokeWidths } from "../../types";
 import { motion } from "framer-motion";
 
 type NodeCProps = {
@@ -59,11 +59,9 @@ const NodeC = ({
         initial={{
           rotate: 0,
         }}
-        animate={
-          {
-              rotate: 360,
-          }
-        }
+        animate={{
+          rotate: 360,
+        }}
         transition={{
           repeat: Infinity,
           duration: miniNodeOrbitalPeriod,

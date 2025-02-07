@@ -1,5 +1,5 @@
 import Circle from "../Circle";
-import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
+import { StrokeWidths } from "../../types";
 import { motion } from "framer-motion";
 
 type NodeEProps = {

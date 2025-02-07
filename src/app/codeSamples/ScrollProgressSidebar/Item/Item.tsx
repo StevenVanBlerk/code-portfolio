@@ -1,4 +1,4 @@
-import { TextButton } from "@/designSystem";
+import { TextButton } from "src/designSystem";
 import { motion } from "framer-motion";
 import { ExtendedRef } from "../types";
 

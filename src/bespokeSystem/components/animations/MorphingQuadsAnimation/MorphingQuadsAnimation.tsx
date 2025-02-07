@@ -1,6 +1,6 @@
 "use client";
-import useWindowDimensions from "@/designSystem/utilities/useWindowDimensions";
-import MorphingQuads from "@/bespokeSystem/components/animations/MorphingQuads";
+import useWindowDimensions from "src/designSystem/utilities/useWindowDimensions";
+import MorphingQuads from "src/bespokeSystem/components/animations/MorphingQuads";
 
 const MorphingQuadsAnimation = () => {
   const { windowDimensions } = useWindowDimensions();

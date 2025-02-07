@@ -1,22 +1,11 @@
 import { motion } from "framer-motion";
-import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
+import { OrbitingNodeProps } from "../../types";
 import NodeA from "./NodeA";
 import NodeB from "./NodeB";
 import NodeC from "./NodeC";
 import NodeCursor from "./NodeCursor";
 import NodeD from "./NodeD";
 import NodeE from "./NodeE";
-
-export type OrbitingNode = {
-  nodeType: "CURSOR" | "A" | "B" | "C" | "D" | "E";
-  nodeOuterRadius: number;
-  orbitalRadius: number;
-  orbitalPeriod: number;
-  strokeWidths: StrokeWidths;
-  nodeRotationalPeriod?: number;
-  initialOrbitPosition: number;
-  color?: string;
-};
 
 const OrbitingNode = ({
   nodeType,
@@ -27,7 +16,7 @@ const OrbitingNode = ({
   nodeRotationalPeriod = 0,
   initialOrbitPosition = 0,
   color = "#fff",
-}: OrbitingNode) => {
+}: OrbitingNodeProps) => {
   return (
     <motion.g
       initial={{

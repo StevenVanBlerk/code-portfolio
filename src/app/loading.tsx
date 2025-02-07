@@ -1,5 +1,5 @@
 "use client";
-import { LoadingSpinner } from "@/designSystem";
+import { LoadingSpinner } from "src/designSystem";
 import { useEffect, useState } from "react";
 
 const Loading = () => {

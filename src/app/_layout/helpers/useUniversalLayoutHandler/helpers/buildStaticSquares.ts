@@ -1,19 +1,13 @@
+import { StaticSquare } from "../../../types";
 import buildPercentageBasedDimensions from "./buildPercentageBasedDimensions";
 
-export type BackgroundSquare = {
-  width: number;
-  height: number;
-  strokeWidth: number;
-  isRotated?: boolean;
-};
-
-const buildBackgroundSquares = (canvasWidth: number) => {
+const buildStaticSquares = (canvasWidth: number) => {
   const { onePercentOfCanvas, strokeWidths } =
     buildPercentageBasedDimensions(canvasWidth);
 
   const squareWidth = onePercentOfCanvas * 26.8;
 
-  const squares: BackgroundSquare[] = [
+  const squares: StaticSquare[] = [
     {
       width: squareWidth,
       height: squareWidth,
@@ -29,4 +23,4 @@ const buildBackgroundSquares = (canvasWidth: number) => {
   return squares;
 };
 
-export default buildBackgroundSquares;
+export default buildStaticSquares;

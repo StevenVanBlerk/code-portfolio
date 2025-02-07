@@ -1,14 +1,6 @@
 import { motion } from "framer-motion";
+import { CircleProps } from "../../types";
 
-type CircleProps = {
-  strokeWidth: number;
-  radius: number;
-  strokeColor?: string;
-  fillColor?: string;
-  strokeStyle?: "solid" | "dotted";
-  rotationalPeriod?: number;
-  rotationalDirection?: "clockwise" | "counter-clockwise";
-};
 const Circle = ({
   strokeWidth,
   radius,

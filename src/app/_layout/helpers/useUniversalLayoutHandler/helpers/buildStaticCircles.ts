@@ -1,18 +1,7 @@
-import { OrbitingNode } from "../OrbitingNode/OrbitingNode";
+import { StaticCircle } from "../../../types";
 import buildPercentageBasedDimensions from "./buildPercentageBasedDimensions";
 
-type Node = Omit<OrbitingNode, "orbitalRadius">;
-
-export type BackgroundCircle = {
-  strokeWidth: number;
-  diameter: number;
-  strokeStyle?: "dotted";
-  rotationalPeriod?: number;
-  rotationalDirection?: "clockwise" | "counter-clockwise";
-  orbitingNode?: Node;
-};
-
-const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
+const buildStaticCircles = (canvasWidth: number): StaticCircle[] => {
   const { onePercentOfCanvas, strokeWidths } =
     buildPercentageBasedDimensions(canvasWidth);
 
@@ -149,4 +138,4 @@ const buildBackgroundCircles = (canvasWidth: number): BackgroundCircle[] => {
   ];
 };
 
-export default buildBackgroundCircles;
+export default buildStaticCircles;

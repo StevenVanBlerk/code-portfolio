@@ -1,5 +1,5 @@
 import Circle from "../Circle";
-import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
+import { StrokeWidths } from "../../types";
 
 type NodeCursorProps = {
   nodeOuterRadius: number;

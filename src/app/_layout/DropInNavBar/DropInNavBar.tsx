@@ -1,14 +1,14 @@
 "use client";
 
-import { TextButton } from "@/designSystem";
-import Button from "@/designSystem/components/inputs/Button";
-import TextLink from "@/designSystem/components/navigation/TextLink";
+import { TextButton } from "src/designSystem";
+import Button from "src/designSystem/components/inputs/Button";
+import TextLink from "src/designSystem/components/navigation/TextLink";
 import NextImage from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MotionConfig, motion, useAnimationControls } from "framer-motion";
 
-const NavBar = () => {
+const DropInNavBar = () => {
   const pathname = usePathname();
   const isOnHomePage = pathname === "/";
 
@@ -157,4 +157,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default DropInNavBar;

@@ -1,4 +1,4 @@
-import { StrokeWidths } from "../useGrisHandler/buildPercentageBasedDimensions";
+import { StrokeWidths } from "../../types";
 
 type NodeAProps = {
   nodeOuterRadius: number;

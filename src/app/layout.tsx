@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Layout } from "./_layout/Layout";
+import Layout from "./_layout";
 
 export const metadata: Metadata = {
   title: "Steven van Blerk",

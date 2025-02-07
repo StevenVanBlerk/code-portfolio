@@ -1,11 +1,4 @@
-export type StrokeWidths = {
-  xxs: number;
-  xs: number;
-  sm: number;
-  md: number;
-  lg: number;
-  xl: number;
-};
+import { StrokeWidths } from "../../../types";
 
 const buildPercentageBasedDimensions = (canvasWidth: number) => {
   const onePercentOfCanvas = canvasWidth / 100;

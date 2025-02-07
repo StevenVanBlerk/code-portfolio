@@ -1,10 +1,4 @@
-type SquareProps = {
-  width: number;
-  height: number;
-  strokeWidth: number;
-  canvasWidth: number;
-  isRotated?: boolean;
-};
+import { SquareProps } from "../../types";
 
 const Square = ({
   width,

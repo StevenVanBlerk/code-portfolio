@@ -1,13 +1,21 @@
-"use client";
-
+import { StaticCircle, StaticSquare } from "../types";
 import Circle from "./Circle";
 import OrbitingNode from "./OrbitingNode/OrbitingNode";
 import Square from "./Square";
-import useGrisHandler from "./useGrisHandler";
 
-const GrisAnimation = () => {
-  const { isLoading, canvasWidth, backgroundCircles, backgroundSquares } =
-    useGrisHandler();
+type GrisAnimationProps = {
+  isLoading: boolean;
+  canvasWidth: number;
+  backgroundCircles: StaticCircle[];
+  backgroundSquares: StaticSquare[];
+};
+
+const GrisAnimation = ({
+  isLoading,
+  canvasWidth,
+  backgroundCircles,
+  backgroundSquares,
+}: GrisAnimationProps) => {
   if (isLoading) return;
 
   return (
@@ -64,6 +72,9 @@ const GrisAnimation = () => {
 export default GrisAnimation;
 
 /** TO-DO:
- * validate all rotation directions
- * add blur effect to OrbitingNode nuclei
+ * - fix bug where portrait screens shrink the SVG too much.
+ * - validate all rotation directions.
+ * - tweak dimensions, orbital speed, and rotational speeds of all circles and nodes.
+ * - add blur effect to OrbitingNode nuclei.
+ * - Perhaps the gris animation is fullscreen on the landing page, and shifts to the right when on a nested page.
  */
